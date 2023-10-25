@@ -1,4 +1,5 @@
 import React from 'react';
+import { Analytics } from '@vercel/analytics/react';
 import styles from '/styles/Home.module.css';
 import Head from 'next/head';
 
@@ -10,7 +11,8 @@ export default function LandingPage() {
         <link rel="icon" href="/favicon.ico" /> 
       </Head>
       <h1 className={styles.h1}> Welcome to my website!</h1>      
-      <h2 className={styles.h2}> Currently under development. Please check back after October 1st, I promise it'll be worth it!</h2>
+      <h2 className={styles.h2}> Currently under development. Please check back after October 1st!</h2>
+      <Analytics />
     </div>
   );
 }
