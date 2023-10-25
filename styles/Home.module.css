@@ -1,0 +1,15 @@
+.container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(236, 45, 45);
+  align-items: center;
+  justify-content: center;
+}
+
+.h1, .h2 {
+  display: block;  /* This makes sure they take up the full width and stack on top of each other */
+  margin: 0;       /* Reset any default margins to control spacing */
+  padding: 10px 0; /* Add vertical padding for spacing between the two */
+}
