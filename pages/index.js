@@ -55,13 +55,11 @@ export default function LandingPage() {
               alt="my picture"
               className={styles.myimage}
             />
-            {typedText}
+            Harsha Vippala
           </h1>
         </div>
         <div className={styles.buttonsContainer}>
-          <button className={`${styles.button} ${styles.active}`}>
-            About Me
-          </button>
+          <button className={styles.button}>About Me</button>
           <Link href="/experiences">
             <button className={styles.button}>Experience</button>
           </Link>
@@ -73,7 +71,30 @@ export default function LandingPage() {
           </Link>
         </div>
       </div>
-      <div className={styles.bottomContainer}></div>
+      <div className={styles.bottomContainer}>
+        <h1 className={styles.aboutHeading}> Hey! </h1>
+        <p className={styles.aboutText}>
+          I'm Harsha Vippala, a Software Engineer based in Dallas, Texas,
+          specializing in building (and occasionally designing) exceptional
+          websites, and everything in between.
+        </p>
+        <p className={styles.aboutText}>
+          With 5 years of experience in software engineering, I've honed my
+          skills in crafting reliable and secure software solutions. By day, I'm
+          immersed in the world of software development, working on back-end
+          application development using JavaScript, Java, TypeScript and Python.
+          I'm well-versed in frameworks like NestJS, React, Spring, Next.js,
+          GraphQL, and gRPC, and I'm proficient with databases like SQL,
+          Redshift, MongoDB, Postgres, and DynamoDB.
+        </p>
+        <p className={styles.aboutText}>
+          But when I'm not debugging life's challenges, you can catch me at
+          music concerts, passionately cheering for machester city and redbull.
+          This is my little corner of the internet where the binary world of
+          coding seamlessly mingles with the colorful world of music, sports,
+          and f1.Welcome to my digital realm! 🎮🎶⚽🏎️"
+        </p>
+      </div>
       <Analytics />
       <footer className={styles.footer}>
         <p className={styles.footerText}>

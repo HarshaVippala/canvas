@@ -1,0 +1,47 @@
+.experience {
+  border: 1px solid #ccc;
+  padding: 20px;
+  margin: 20px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.companyInfo {
+  display: flex;
+  align-items: center;
+}
+
+.companyLogo {
+  width: 100px;
+  height: 100px;
+  margin-right: 20px;
+}
+
+.companyDetails {
+  font-family: "Rubik", sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.companyName {
+  font-family: "Rubik", sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+}
+
+.employmentDates {
+  color: #666;
+}
+
+.summaryList {
+  font-family: "Rubik", sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  list-style: disc;
+  padding-left: 20px;
+}
+
+/* Add more styles as needed */

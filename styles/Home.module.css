@@ -10,29 +10,47 @@
   display: absolute;
 }
 
+.bottomContainer {
+  padding-left: 7rem;
+  padding-right: 3rem;
+  width: fit-content;
+  left: 3rem;
+}
+
+.aboutText {
+  font-family: "Rubik", sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+}
+.aboutHeading {
+  font-family: "Rubik", sans-serif;
+  font-weight: 400;
+  font-size: 40px;
+}
+
 .buttonsContainer {
   display: flex;
   justify-content: center; /* Center horizontally */
   position: absolute;
   top: 6rem; /* Adjust the distance from the bottom */
-  width: 100%; 
+  width: 100%;
 }
+
 .buttonsContainer button {
   margin: 1rem;
   padding: 0;
   background: none; /* Remove background */
   border: none; /* Remove border */
   cursor: pointer;
-  font-family: 'Rubik', sans-serif; 
+  font-family: "Rubik", sans-serif;
   font-size: 20px;
   color: #000000; /* Text color */
   transition: color 0.3s; /* Add a smooth background color transition */
 }
 
-.home{
+.home {
   left: auto;
   size: 20px;
-
 }
 .active {
   background-color: #0056b3; /* Change background color when active */
@@ -50,19 +68,19 @@
   left: 0;
   width: 100%;
   color: #000000;
-  text-align: center; 
+  text-align: center;
 }
 
 .footerText {
   font-size: 10px !important;
-  font-family: 'Rubik', sans-serif;
+  font-family: "Rubik", sans-serif;
   font-weight: 400;
 }
 
 .h1 {
   padding: 10px 0;
   color: rgb(0, 0, 0);
-  font-family: 'Rubik', sans-serif;
+  font-family: "Rubik", sans-serif;
   font-weight: 400;
   font-size: 35px;
   position: fixed;
@@ -96,7 +114,7 @@
   padding: 10px 10px;
   padding-top: 1rem;
   color: rgb(22, 121, 192);
-  font-family: 400px 'Rubik', sans-serif;
+  font-family: 400px "Rubik", sans-serif;
   font-size: 40px;
 }
 
@@ -157,7 +175,7 @@
   .h1 {
     font-size: 20px;
     left: 5rem;
-    top:1rem;
+    top: 1rem;
   }
 
   .h2 {
@@ -167,7 +185,7 @@
   .myimage {
     width: 3rem;
     height: 3rem;
-    left:1rem;
+    left: 1rem;
   }
 
   .topPortion {
