@@ -28,6 +28,8 @@
   font-weight: 400;
   font-size: 20px;
   color: #1f1f1f;
+  text-align: justify;
+  text-justify: inter-word;
 }
 
 .aboutHeading {
@@ -233,8 +235,8 @@
   }
 
   .bottomContainer {
-    padding-left: 10%; /* Use percentage for padding */
-    padding-right: 10%; /* Use percentage for padding */
+    padding-left: 11%; /* Use percentage for padding */
+    padding-right: 09%; /* Use percentage for padding */
     width: 100%; /* Adjust width to be responsive */
   }
 
