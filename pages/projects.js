@@ -31,7 +31,7 @@ export default function AboutPage() {
       <Sidebar />
       <footer className={styles.footer}>
         <p className={styles.footerText}>
-          &copy; 2023 Your's truly. All rights reserved.
+          &copy; 2023 Your's truly.
         </p>
       </footer>
     </div>
