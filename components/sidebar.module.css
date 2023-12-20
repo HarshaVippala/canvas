@@ -1,7 +1,7 @@
 .fixedContainer {
     position: fixed;
     bottom: 0;
-    left: 5%;
+    left: 2rem;;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -11,6 +11,10 @@
     margin-bottom: 20px;
   }
   
+  .socialIcons img:hover{
+    transform: scale(1.5)
+  }
+
   .socialIcons a {
     display: block;
     padding: 10%;
@@ -20,6 +24,7 @@
   .socialIcons img {
     width: 25px;
     height: 25px;
+    transition: transform 0.3s ease;
   }
 
 .verticalLineLeft {
@@ -28,3 +33,42 @@
     background-color: rgb(0, 0, 0);
   }
 
+
+
+  @media (max-width: 768px) {
+    .fixedContainer {
+      position: fixed;
+      bottom: 0;
+      left: 0.5rem;;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+  }
+  
+  .socialIcons {
+      margin-bottom: 20px;
+    }
+    
+    .socialIcons img:hover{
+      transform: scale(1.5)
+    }
+  
+    .socialIcons a {
+      display: block;
+      padding: 10%;
+      margin-bottom: 10px;
+    }
+    
+    .socialIcons img {
+      width: 20px;
+      height: 20px;
+      transition: transform 0.3s ease;
+    }
+  
+  .verticalLineLeft {
+      height: 40px;
+      width: 2px;
+      background-color: rgb(0, 0, 0);
+    }
+
+  }

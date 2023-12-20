@@ -3,6 +3,7 @@ import Head from "next/head";
 import Sidebar from "../components/sidebar";
 import styles from "/styles/exp.module.css";
 import Experience from "../components/exp";
+import Link from "next/link";
 
 export default function AboutPage() {
   const workExperience = {
@@ -29,7 +30,15 @@ export default function AboutPage() {
         />
       </Head>
       <div className={styles.topContainer}>
-        <h1 className={styles.h1}> The Story So Far: My Odyssey of Work</h1>
+        <div className={styles.buttonsContainer}>
+          <Link href="/">
+            <button className={styles.button}>About Me</button>
+          </Link>
+            <button className={styles.experienceButton}>Experience</button>
+          <Link href="/projects">
+          <button className={styles.button}>Projects</button>
+          </Link>
+        </div>
       </div>
       <div className={styles.bottomContainer}>
         <Experience
@@ -53,6 +62,11 @@ export default function AboutPage() {
         
       </div>
       <Sidebar />
+      <footer className={styles.footer}>
+        <p className={styles.footerText}>
+          &copy; 2023 Your's truly. All rights reserved.
+        </p>
+      </footer>
     </div>
   );
 }
