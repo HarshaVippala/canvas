@@ -6,31 +6,8 @@ import Sidebar from "../components/sidebar";
 import Link from "next/link";
 
 export default function LandingPage() {
-  const [typedText, setTypedText] = useState("");
-  const [completedFirstText, setCompletedFirstText] = useState(false);
-
-  const targetText = "Haarsha Vippala";
-  const subTargetText = " Software Engineer";
-
-  useEffect(() => {
-    let index = 0;
-
-    const typingInterval = setInterval(() => {
-      if (!completedFirstText) {
-        if (index < targetText.length) {
-          setTypedText((prevText) => prevText + targetText.charAt(index));
-          index++;
-        } else {
-          setCompletedFirstText(true);
-        }
-      }
-    }, 50);
-
-    return () => clearInterval(typingInterval);
-  }, [completedFirstText]);
-
   return (
-    <div className={styles.container}>
+    <div>
       <div className={styles.topContainer}>
         <Head>
           <meta
@@ -47,52 +24,47 @@ export default function LandingPage() {
           />
         </Head>
         <Sidebar />
-        <div className={styles.textContainer}>
+        <div>
+          <img
+            id="zoom-image"
+            src="/pixelup.jpg"
+            alt="my picture"
+            className={styles.myimage}
+          />
           <h1 id="typed-output" className={styles.h1}>
-            <img
-              id="zoom-image"
-              src="/pixelup.jpg"
-              alt="my picture"
-              className={styles.myimage}
-            />
             Harsha Vippala
           </h1>
         </div>
         <div className={styles.buttonsContainer}>
-          <button className={styles.button}>About Me</button>
+          <button className={styles.aboutButton}>About Me</button>
           <Link href="/experiences">
             <button className={styles.button}>Experience</button>
           </Link>
           <Link href="projects">
             <button className={styles.button}>Projects</button>
           </Link>
-          <Link href="/hireMe">
-            <button className={styles.button}>Hire me</button>
-          </Link>
         </div>
       </div>
       <div className={styles.bottomContainer}>
         <h1 className={styles.aboutHeading}> Hey! </h1>
         <p className={styles.aboutText}>
-          I'm Harsha Vippala, a Software Engineer based in Dallas, Texas,
-          specializing in building (and occasionally designing) exceptional
-          websites, and everything in between.
+          I'm Harsha Vippala, a Software Engineer from Dallas, Texas.With over
+          five years of experience, I've had the opportunity to delve into
+          various aspects of software engineering, from back-end frameworks like
+          NestJS and Spring to front-end technologies including ReactJS and
+          Next.js. My roles at Liberty Mutual Insurance and American Express
+          have not only sharpened my technical skills but also taught me the
+          value of teamwork and adaptability in delivering effective software
+          solutions.
         </p>
         <p className={styles.aboutText}>
-          With 5 years of experience in software engineering, I've honed my
-          skills in crafting reliable and secure software solutions. By day, I'm
-          immersed in the world of software development, working on back-end
-          application development using JavaScript, Java, TypeScript and Python.
-          I'm well-versed in frameworks like NestJS, React, Spring, Next.js,
-          GraphQL, and gRPC, and I'm proficient with databases like SQL,
-          Redshift, MongoDB, Postgres, and DynamoDB.
-        </p>
-        <p className={styles.aboutText}>
-          But when I'm not debugging life's challenges, you can catch me at
-          music concerts, passionately cheering for machester city and redbull.
-          This is my little corner of the internet where the binary world of
-          coding seamlessly mingles with the colorful world of music, sports,
-          and f1.Welcome to my digital realm! 🎮🎶⚽🏎️"
+          But there's more to me than just coding. Away from the keyboard, you
+          can find me jamming at music concerts, watching football and F1. These
+          hobbies are not just pastimes; they're a reflection of my belief in
+          enjoying every aspect of life, bringing a similar energy and
+          enthusiasm to my professional work. I thrive on the excitement of new
+          challenges and enjoy exploring the synergies between technology and
+          everyday life.
         </p>
       </div>
       <Analytics />
