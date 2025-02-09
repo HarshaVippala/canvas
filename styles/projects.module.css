@@ -62,3 +62,174 @@
     font-family: "Rubik", sans-serif;
     font-weight: 400;
   }
+
+.container {
+  min-height: 100vh;
+  padding: 6rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.content {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.title {
+  color: #ccd6f6;
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+  font-family: 'Space Grotesk', sans-serif;
+  position: relative;
+}
+
+.title::after {
+  content: '';
+  display: block;
+  width: 300px;
+  height: 1px;
+  background-color: #233554;
+  margin-top: 1rem;
+}
+
+.projectsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.projectCard {
+  background-color: #112240;
+  border-radius: 4px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.projectImage {
+  position: relative;
+  padding-top: 56.25%; /* 16:9 Aspect Ratio */
+  overflow: hidden;
+}
+
+.projectImage img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.projectCard:hover .projectImage img {
+  transform: scale(1.05);
+}
+
+.projectLinks {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  display: flex;
+  gap: 1rem;
+  z-index: 2;
+}
+
+.projectLinks a {
+  width: 22px;
+  height: 22px;
+  background-color: #0a192f;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease;
+}
+
+.projectLinks a:hover {
+  transform: translateY(-3px);
+}
+
+.projectLinks img {
+  width: 14px;
+  height: 14px;
+  filter: invert(92%) sepia(5%) saturate(1033%) hue-rotate(169deg) brightness(97%) contrast(87%);
+}
+
+.projectInfo {
+  padding: 2rem;
+}
+
+.projectTitle {
+  color: #ccd6f6;
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.projectDescription {
+  color: #8892b0;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  font-family: 'Inter', sans-serif;
+}
+
+.techList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.techList li {
+  color: #64ffda;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.8rem;
+  background-color: rgba(100, 255, 218, 0.1);
+  padding: 0.35rem 0.8rem;
+  border-radius: 3px;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 4rem 1.5rem;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+
+  .title::after {
+    width: 200px;
+  }
+
+  .projectsGrid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 3rem 1rem;
+  }
+
+  .title {
+    font-size: 1.75rem;
+  }
+
+  .projectInfo {
+    padding: 1.5rem;
+  }
+
+  .projectTitle {
+    font-size: 1.2rem;
+  }
+
+  .projectDescription {
+    font-size: 0.9rem;
+  }
+}

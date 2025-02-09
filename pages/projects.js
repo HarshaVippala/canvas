@@ -1,39 +1,93 @@
-import React from "react";
-import Sidebar from "../components/sidebar";
-import styles from "/styles/projects.module.css";
-import Head from "next/head";
-import Link from "next/link";
+import React from 'react';
+import { motion } from 'framer-motion';
+import Head from 'next/head';
+import styles from '../styles/Projects.module.css';
 
-export default function AboutPage() {
+const projects = [
+  {
+    title: 'Personal Portfolio',
+    description: 'A modern, responsive portfolio website built with Next.js and Framer Motion. Features smooth animations and interactive elements.',
+    tech: ['Next.js', 'React', 'Framer Motion', 'CSS Modules'],
+    github: 'https://github.com/yourusername/portfolio',
+    live: 'https://harshavippala.com',
+    image: '/portfolio-preview.jpg'
+  },
+  // Add more projects here
+];
+
+const container = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2
+    }
+  }
+};
+
+const item = {
+  hidden: { opacity: 0, y: 20 },
+  show: { opacity: 1, y: 0 }
+};
+
+export default function Projects() {
   return (
-    <div>
+    <div className={styles.container}>
       <Head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Projects</title>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap"
-          rel="stylesheet"
-        />
+        <title>Projects | Harsha Vippala</title>
+        <meta name="description" content="Featured projects by Harsha Vippala" />
       </Head>
-      <div className={styles.topContainer}>
-        <div className={styles.buttonsContainer}>
-          <Link href="/">
-            <button className={styles.button}>About Me</button>
-          </Link>
-          <Link href="/experiences">
-            <button className={styles.button}>Experience</button>
-          </Link>
-          <button className={styles.projectsButton}>Projects</button>
-        </div>
-      </div>
-      <Sidebar />
-      <footer className={styles.footer}>
-        <p className={styles.footerText}>
-          &copy; 2023 Your's truly.
-        </p>
-      </footer>
+
+      <motion.div 
+        className={styles.content}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        <h1 className={styles.title}>Some Things I've Built</h1>
+        
+        <motion.div 
+          className={styles.projectsGrid}
+          variants={container}
+          initial="hidden"
+          animate="show"
+        >
+          {projects.map((project, index) => (
+            <motion.div 
+              key={project.title}
+              className={styles.projectCard}
+              variants={item}
+              whileHover={{ y: -10 }}
+            >
+              <div className={styles.projectImage}>
+                <img src={project.image} alt={project.title} />
+                <div className={styles.projectLinks}>
+                  {project.github && (
+                    <a href={project.github} target="_blank" rel="noopener noreferrer">
+                      <img src="/github.svg" alt="GitHub" />
+                    </a>
+                  )}
+                  {project.live && (
+                    <a href={project.live} target="_blank" rel="noopener noreferrer">
+                      <img src="/external-link.svg" alt="Live Site" />
+                    </a>
+                  )}
+                </div>
+              </div>
+              
+              <div className={styles.projectInfo}>
+                <h3 className={styles.projectTitle}>{project.title}</h3>
+                <p className={styles.projectDescription}>{project.description}</p>
+                <ul className={styles.techList}>
+                  {project.tech.map((tech, index) => (
+                    <li key={index}>{tech}</li>
+                  ))}
+                </ul>
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
+      </motion.div>
     </div>
   );
 }
