@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import Head from 'next/head';
-import styles from '../styles/Projects.module.css';
+import styles from '../styles/projects.module.css';
 
 const projects = [
   {
