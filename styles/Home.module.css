@@ -17,7 +17,7 @@
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 1rem;
+  padding: 0;
 }
 
 .sectionWrapper {
@@ -39,7 +39,7 @@
   z-index: 100;
   background: rgba(10, 25, 47, 0.05);
   backdrop-filter: blur(4px);
-  padding: 0.75rem;
+  padding: 1rem;
   border-bottom: 1px solid rgba(100, 255, 218, 0.05);
 }
 
@@ -48,7 +48,7 @@
   border: none;
   color: #64ffda;
   font-family: "Space Grotesk", monospace;
-  font-size: 0.9rem;
+  font-size: clamp(0.9rem, 3vw, 1rem);
   font-weight: 400;
   cursor: pointer;
   padding: 0.25rem;
@@ -129,24 +129,24 @@
   position: relative;
   z-index: 2;
   min-height: 100vh;
-  padding: 4rem 1rem;
+  padding: 6rem 1rem 2rem;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 .sectionNumber {
   color: #64ffda;
   font-family: "Space Grotesk", monospace;
-  font-size: clamp(1rem, 3vw, 1.2rem);
-  margin-right: 0.75rem;
+  font-size: 1.2rem;
+  margin-right: 1rem;
   text-shadow: 0 0 10px rgba(100, 255, 218, 0.3);
 }
 
 .sectionTitle {
   color: #ccd6f6;
-  font-size: clamp(1.5rem, 4vw, 2rem);
-  margin-bottom: 2rem;
+  font-size: 2rem;
+  margin-bottom: 3rem;
   display: flex;
   align-items: center;
   text-shadow: 0 0 15px rgba(204, 214, 246, 0.2);
@@ -164,8 +164,8 @@
 .hero {
   min-height: 100vh;
   display: flex;
-  align-items: center;
-  padding: 4rem 1rem 2rem;
+  align-items: flex-start;
+  padding: 5rem 1rem 2rem;
   width: 100%;
 }
 
@@ -180,15 +180,14 @@
 }
 
 .heroContent {
-  max-width: min(800px, 95%);
-  background: rgba(10, 25, 47, 0.05);
-  backdrop-filter: blur(4px);
-  padding: clamp(1.5rem, 5vw, 3rem);
-  border-radius: 15px;
-  border: 1px solid rgba(100, 255, 218, 0.05);
-  box-shadow: 0 10px 30px -10px rgba(2, 12, 27, 0.2);
+  max-width: min(800px, 100%);
+  background: transparent;
+  backdrop-filter: none;
+  padding: 1rem;
   margin: 0 auto;
   text-align: left;
+  border: none;
+  box-shadow: none;
 }
 
 .title {
@@ -199,39 +198,36 @@
 .greeting {
   color: #64ffda;
   font-family: "Space Grotesk", monospace;
-  font-size: clamp(1rem, 3vw, 1.2rem);
+  font-size: 1rem;
   display: block;
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
   letter-spacing: 0.1em;
-  text-shadow: 0 0 10px rgba(100, 255, 218, 0.3);
 }
 
 .name {
   color: #ccd6f6;
-  font-size: clamp(2rem, 7vw, 4.5rem);
+  font-size: clamp(2rem, 6vw, 4rem);
   font-weight: bold;
   display: block;
   margin-bottom: 0.5rem;
   line-height: 1.1;
-  text-shadow: 0 0 20px rgba(204, 214, 246, 0.2);
 }
 
 .role {
   color: #8892b0;
-  font-size: clamp(1.25rem, 4vw, 3.5rem);
+  font-size: clamp(1.25rem, 4vw, 3rem);
   display: block;
-  margin-bottom: 1.5rem;
-  line-height: 1.1;
-  text-shadow: 0 0 15px rgba(136, 146, 176, 0.2);
+  margin-bottom: 1rem;
+  line-height: 1.3;
 }
 
 .description {
   color: #8892b0;
-  font-size: clamp(0.9rem, 2.5vw, 1.2rem);
+  font-size: clamp(0.9rem, 2.5vw, 1.1rem);
   max-width: 540px;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
   line-height: 1.7;
-  text-shadow: 0 0 10px rgba(136, 146, 176, 0.2);
+  opacity: 0.8;
 }
 
 .cta {
@@ -321,132 +317,30 @@
 }
 
 .socialLinks {
-  position: fixed;
-  right: 1rem;
-  bottom: 1rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  padding: 0.75rem;
-  z-index: 99;
-  align-items: center;
-}
-
-.socialLinks::after {
-  content: "";
-  display: block;
-  width: 1px;
-  height: 90px;
-  background: linear-gradient(to bottom, #64ffda 0%, rgba(100, 255, 218, 0) 100%);
-  margin: 0 auto;
-  animation: glowLine 2s ease-in-out infinite;
-}
-
-@keyframes glowLine {
-  0%, 100% {
-    height: 90px;
-    opacity: 0.5;
-  }
-  50% {
-    height: 100px;
-    opacity: 0.8;
-  }
-}
-
-.socialLinks a {
-  width: 35px;
-  height: 35px;
-  background: rgba(17, 34, 64, 0.1);
-  backdrop-filter: blur(4px);
-  border: 1px solid rgba(100, 255, 218, 0.05);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.3s ease;
-}
-
-.socialLinks a:hover {
-  transform: translateY(-5px) scale(1.1);
-  background: rgba(100, 255, 218, 0.1);
-  border-color: #64ffda;
-  box-shadow: 0 0 20px rgba(100, 255, 218, 0.3);
-}
-
-.socialLinks a::before {
-  content: '';
-  position: absolute;
-  inset: -2px;
-  border-radius: 50%;
-  padding: 2px;
-  background: linear-gradient(45deg, #64ffda, #0a192f);
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.socialLinks a:hover::before {
-  opacity: 1;
-}
-
-.socialLinks img {
-  width: 16px;
-  height: 16px;
-  filter: brightness(0) saturate(100%) invert(92%) sepia(5%) saturate(1033%) hue-rotate(169deg) brightness(97%) contrast(87%);
+  display: none;
 }
 
 .footer {
   position: relative;
   z-index: 2;
   text-align: center;
-  padding: 0.75rem;
+  padding: 1rem;
   font-family: 'Space Grotesk', monospace;
-  font-size: 0.7rem;
-  background: rgba(10, 25, 47, 0.1);
-  backdrop-filter: blur(4px);
+  font-size: 0.8rem;
+  background: transparent;
   color: #8892b0;
   letter-spacing: 0.5px;
-  border-top: 1px solid rgba(100, 255, 218, 0.05);
+  margin-top: auto;
 }
 
 .footer p {
   margin: 0;
-  opacity: 0.8;
+  opacity: 0.7;
 }
 
 .footer a {
   color: #64ffda;
   text-decoration: none;
-  position: relative;
-  transition: all 0.2s ease;
-}
-
-.footer a:hover {
-  color: #64ffda;
-  opacity: 1;
-  text-decoration: none;
-  transform: none;
-}
-
-.footer a::after {
-  content: '';
-  position: absolute;
-  width: 100%;
-  height: 1px;
-  background: #64ffda;
-  bottom: -1px;
-  left: 0;
-  transform: scaleX(0);
-  transform-origin: right;
-  transition: transform 0.3s ease;
-}
-
-.footer a:hover::after {
-  transform: scaleX(1);
-  transform-origin: left;
 }
 
 .experience {
@@ -656,54 +550,24 @@
 }
 
 @media (max-width: 480px) {
-  .section {
-    padding: 3rem 0.75rem;
-  }
-
-  .sideNav {
-    padding: 0.5rem 0;
-    gap: 1.25rem;
-    background: rgba(10, 25, 47, 0.05);
-    backdrop-filter: blur(8px);
-  }
-
-  .sideNav button {
-    font-size: 0.85rem;
-    padding: 0.25rem;
-  }
-
   .hero {
-    padding: 3.5rem 0.5rem 1rem;
+    padding: 4rem 0.75rem 1rem;
   }
 
   .heroContent {
-    background: rgba(10, 25, 47, 0.02);
     padding: 0.75rem;
-    max-width: 100%;
-    border: none;
-    box-shadow: none;
-  }
-
-  .greeting {
-    font-size: 0.9rem;
-    margin-bottom: 0.5rem;
   }
 
   .name {
-    font-size: 2rem;
-    margin-bottom: 0.5rem;
+    font-size: 2.25rem;
   }
 
   .role {
-    font-size: 1.25rem;
-    margin-bottom: 0.75rem;
-    line-height: 1.3;
+    font-size: 1.5rem;
   }
 
   .description {
-    font-size: 0.85rem;
-    margin-bottom: 1.25rem;
-    opacity: 0.8;
+    font-size: 0.9rem;
   }
 
   .aboutGrid {
@@ -717,8 +581,8 @@
     bottom: auto;
     flex-direction: row;
     justify-content: center;
-    padding: 0.75rem 0;
-    margin-top: 1.5rem;
+    padding: 1rem 0;
+    margin-top: 2rem;
   }
 
   .socialLinks::after {
@@ -726,24 +590,35 @@
   }
 
   .sectionTitle {
-    font-size: 1.5rem;
-    margin-bottom: 1.5rem;
+    font-size: 2rem;
   }
 
-  .sectionNumber {
-    font-size: 1rem;
+  .sectionTitle::after {
+    width: 200px;
+  }
+
+  .skillsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .timeline::before {
+    left: 15px;
+  }
+
+  .timelineItem {
+    padding-left: 2.5rem;
   }
 
   .experience, .projects, .contact {
-    padding: 2.5rem 0.75rem;
+    padding: 3rem 1.5rem;
   }
 }
 
 /* iPhone SE and smaller devices */
 @media (max-width: 375px) {
   .sideNav {
-    padding: 0.4rem 0;
-    gap: 1rem;
+    padding: 0.5rem 0;
+    gap: 1.25rem;
   }
 
   .sideNav button {
@@ -751,7 +626,7 @@
   }
 
   .hero {
-    padding: 3rem 0.5rem 1rem;
+    padding: 3.5rem 0.5rem 1rem;
   }
 
   .heroContent {
@@ -759,25 +634,15 @@
   }
 
   .name {
-    font-size: 1.75rem;
+    font-size: 2rem;
   }
 
   .role {
-    font-size: 1.1rem;
+    font-size: 1.25rem;
   }
 
   .description {
-    font-size: 0.8rem;
-  }
-
-  .socialLinks a {
-    width: 28px;
-    height: 28px;
-  }
-
-  .socialLinks img {
-    width: 12px;
-    height: 12px;
+    font-size: 0.85rem;
   }
 }
 
@@ -787,7 +652,7 @@
     padding: 0.75rem 0;
     gap: 1.5rem;
     background: rgba(10, 25, 47, 0.05);
-    backdrop-filter: blur(8px);
+    backdrop-filter: blur(4px);
   }
 
   .sideNav button {
