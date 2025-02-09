@@ -156,6 +156,12 @@
   .title::after {
     width: 200px;
   }
+
+  .timelineContent {
+    background: transparent !important;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
 }
 
 @media (max-width: 480px) {
@@ -177,7 +183,7 @@
 }
 
 .experienceSection {
-  padding: 6rem 2rem;
+  padding: 1rem 2rem;
   position: relative;
   z-index: 2;
   max-width: 1200px;
@@ -187,8 +193,8 @@
 .sectionTitle {
   color: #ccd6f6;
   font-size: 2.5rem;
-  margin-bottom: 3rem;
-  font-family: 'Space Grotesk', sans-serif;
+  margin-bottom: 1.5rem;
+  font-family: 'Space Mono', monospace;
   position: relative;
   padding-left: 2rem;
   text-align: left;
@@ -208,17 +214,45 @@
   position: relative;
   max-width: 800px;
   margin: 0 auto;
-  padding: 2rem 0;
+  padding: 0.5rem 0;
+  background: transparent;
 }
 
 .timelineContent {
-  background: rgba(17, 34, 64, 0.3);
-  padding: 2.5rem;
+  background: transparent;
+  background-color: transparent !important;
+  -webkit-background-color: transparent !important;
+  padding: 2rem;
   border-radius: 12px;
-  border: 1px solid rgba(100, 255, 218, 0.1);
-  box-shadow: 0 10px 30px -10px rgba(2, 12, 27, 0.7);
-  margin-bottom: 3rem;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
   position: relative;
+  transition: all 0.3s ease;
+  mix-blend-mode: normal;
+}
+
+.timelineContent::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  padding: 1px;
+  background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.timelineContent:hover {
+  transform: translateY(-5px);
+  background: transparent;
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
 }
 
 .roleTitle {
@@ -239,6 +273,42 @@
   margin: 0.5rem 0;
 }
 
+.projectLink {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-left: 1rem;
+  opacity: 1;
+  transition: all 0.3s ease;
+  background: rgba(100, 255, 218, 0.15);
+  padding: 0.6rem 1rem;
+  border-radius: 6px;
+  border: 1.5px solid rgba(100, 255, 218, 0.3);
+  color: #64ffda;
+  text-decoration: none;
+}
+
+.projectLink:hover {
+  opacity: 1;
+  transform: translateY(-2px);
+  background: rgba(100, 255, 218, 0.25);
+  border-color: rgba(100, 255, 218, 0.8);
+  box-shadow: 0 4px 12px rgba(100, 255, 218, 0.2);
+}
+
+.projectLink svg {
+  width: 20px;
+  height: 20px;
+  stroke: #64ffda;
+  stroke-width: 2;
+}
+
+.linkText {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.9rem;
+  color: #64ffda;
+}
+
 .companyLogo {
   position: absolute;
   right: 2rem;
@@ -255,8 +325,27 @@
   width: 100%;
   height: 100%;
   object-fit: contain;
-  filter: brightness(0) saturate(100%) invert(100%);
+  filter: brightness(1) saturate(100%);
   opacity: 0.9;
+  transition: all 0.3s ease;
+}
+
+.timelineContent[data-company="7-Eleven"] .companyLogo img {
+  filter: brightness(1) saturate(100%);
+}
+
+.timelineContent[data-company="Liberty-Mutual"] .companyLogo img {
+  filter: brightness(1) saturate(100%);
+}
+
+.timelineContent[data-company="American-Express"] .companyLogo img {
+  filter: brightness(1) saturate(100%);
+}
+
+.timelineContent:hover .companyLogo img {
+  opacity: 1;
+  transform: scale(1.05);
+  filter: brightness(1.1) saturate(110%);
 }
 
 .period {
@@ -322,41 +411,82 @@
 
 @media (max-width: 768px) {
   .experienceSection {
-    padding: 4rem 1.5rem;
-  }
-
-  .sectionTitle {
-    font-size: 2rem;
-    padding-left: 1.5rem;
-  }
-
-  .companyLogo {
-    width: 120px;
-    height: 60px;
-    right: 1.5rem;
-    top: 1.5rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .experienceSection {
     padding: 3rem 1rem;
   }
 
   .sectionTitle {
     font-size: 1.75rem;
     padding-left: 1rem;
+    text-align: center;
+  }
+
+  .timelineContent {
+    background: transparent !important;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
   }
 
   .companyLogo {
+    position: relative;
+    right: auto;
+    top: auto;
     width: 100px;
     height: 50px;
-    right: 1rem;
-    top: 1rem;
+    margin: 1rem 0;
+  }
+
+  .roleTitle {
+    font-size: 1.2rem;
+  }
+
+  .companyName {
+    font-size: 1rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .points {
+    gap: 1rem;
   }
 
   .points li {
     font-size: 0.9rem;
     padding-left: 1.5rem;
+  }
+
+  .techStack {
+    gap: 0.5rem;
+  }
+
+  .tech {
+    font-size: 0.75rem;
+    padding: 0.4rem 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .experienceSection {
+    padding: 2rem 0.75rem;
+  }
+
+  .timelineContent {
+    padding: 1.25rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .roleTitle {
+    font-size: 1.1rem;
+  }
+
+  .points li {
+    font-size: 0.85rem;
+    padding-left: 1.25rem;
+    line-height: 1.5;
+  }
+
+  .tech {
+    font-size: 0.7rem;
+    padding: 0.3rem 0.6rem;
   }
 } 

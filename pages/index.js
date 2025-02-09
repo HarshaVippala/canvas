@@ -359,11 +359,90 @@ export default function Home() {
   return (
     <div className={styles.container} ref={containerRef}>
         <Head>
-        <title>Harsha Vippala | Software Engineer</title>
-        <meta name="description" content="Software engineer specializing in web development and cloud technologies" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+          <title>Harsha Vippala | Senior Software Engineer</title>
+          <meta charSet="utf-8" />
+          <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+          <meta name="description" content="Harsha Vippala - Senior Software Engineer specializing in web development, cloud technologies, and building exceptional digital experiences. Expertise in React, Node.js, AWS, and TypeScript." />
+          
+          {/* SEO Meta Tags */}
+          <meta name="author" content="Harsha Vippala" />
+          <meta name="keywords" content="Software Engineer, Full Stack Developer, React Developer, Node.js, TypeScript, AWS, Cloud Architecture, Web Development" />
+          <meta name="robots" content="index, follow" />
+          <meta name="language" content="English" />
+
+          {/* Open Graph / Social Media Meta Tags */}
+          <meta property="og:type" content="website" />
+          <meta property="og:title" content="Harsha Vippala | Senior Software Engineer" />
+          <meta property="og:description" content="Senior Software Engineer specializing in web development and cloud technologies. Building exceptional digital experiences." />
+          <meta property="og:url" content="https://harshavippala.com" />
+          <meta property="og:site_name" content="Harsha Vippala Portfolio" />
+          <meta property="og:image" content="/og-image.jpg" />
+
+          {/* Twitter Card Meta Tags */}
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:title" content="Harsha Vippala | Senior Software Engineer" />
+          <meta name="twitter:description" content="Senior Software Engineer specializing in web development and cloud technologies." />
+          <meta name="twitter:image" content="/og-image.jpg" />
+
+          {/* Security Headers */}
+          <meta httpEquiv="X-Content-Type-Options" content="nosniff" />
+          <meta httpEquiv="X-Frame-Options" content="SAMEORIGIN" />
+          <meta httpEquiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' data: https:; font-src 'self' https:; connect-src 'self' https:;" />
+
+          {/* Favicon and Apple Touch Icons */}
           <link rel="icon" href="/favicon.ico" />
-        <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+          <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+          <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+          <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+          <link rel="manifest" href="/site.webmanifest" />
+
+          {/* Fonts */}
+          <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+
+          {/* Structured Data */}
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "Person",
+                "name": "Harsha Vippala",
+                "jobTitle": "Senior Software Engineer",
+                "url": "https://harshavippala.com",
+                "sameAs": [
+                  "https://github.com/harshavippala",
+                  "https://linkedin.com/in/harshavippala"
+                ],
+                "worksFor": {
+                  "@type": "Organization",
+                  "name": "7-Eleven"
+                },
+                "alumniOf": [
+                  {
+                    "@type": "Organization",
+                    "name": "Liberty Mutual Insurance"
+                  },
+                  {
+                    "@type": "Organization",
+                    "name": "American Express"
+                  }
+                ],
+                "knowsAbout": [
+                  "Web Development",
+                  "Cloud Architecture",
+                  "Software Engineering",
+                  "Full Stack Development",
+                  "React",
+                  "Node.js",
+                  "TypeScript",
+                  "AWS"
+                ]
+              })
+            }}
+          />
+
+          {/* Add link to privacy policy */}
+          <link rel="privacy-policy" href="/privacy" />
         </Head>
 
       <main className={styles.main}>
@@ -429,10 +508,30 @@ export default function Home() {
         </motion.div>
 
         <section id="experience" className={styles.experience}>
-          <h2 className={styles.sectionTitle}>Experience</h2>
-          <div className={styles.timeline}>
+          <motion.h2 
+            className={styles.sectionTitle}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >Experience</motion.h2>
+          
+          <motion.div 
+            className={styles.timeline}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
             {experiences.map((exp, index) => (
-              <div key={exp.company + exp.period} className={styles.timelineContent}>
+              <motion.div 
+                key={exp.company + exp.period} 
+                className={styles.timelineContent}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: index * 0.2 }}
+              >
                 <div className={styles.experienceHeader}>
                   <div className={styles.roleInfo}>
                     <h3 className={styles.roleTitle}>{exp.title}</h3>
@@ -449,9 +548,9 @@ export default function Home() {
                         <circle cx="12" cy="10" r="3"></circle>
                       </svg>
                       {exp.location}
-                    </div>
-                  </div>
-                </div>
+        </div>
+        </div>
+      </div>
 
                 <ul className={styles.points}>
                   {exp.points.map((point, i) => (
@@ -478,16 +577,36 @@ export default function Home() {
                     <span key={i} className={styles.tech}>{tech}</span>
                   ))}
                 </div>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </section>
 
         <section id="projects" className={styles.projects}>
-          <h2 className={styles.sectionTitle}>Projects</h2>
-          <div className={styles.projectsGrid}>
+          <motion.h2 
+            className={styles.sectionTitle}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >Projects</motion.h2>
+          
+          <motion.div 
+            className={styles.projectsGrid}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
             {projects.map((project, index) => (
-              <div key={project.title} className={styles.projectCard}>
+              <motion.div 
+                key={project.title} 
+                className={styles.projectCard}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: index * 0.2 }}
+              >
                 <div className={styles.projectInfo}>
                   <h3>{project.title}</h3>
                   <p>{project.description}</p>
@@ -496,21 +615,29 @@ export default function Home() {
                       <span key={i} className={styles.tech}>{tech}</span>
                     ))}
                   </div>
-                </div>
-              </div>
+      </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </section>
 
       </main>
 
       <motion.footer 
         className={styles.footer}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.5, delay: 1 }}
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
       >
-        <p>Built by me with <a href="https://cursor.sh" target="_blank" rel="noopener noreferrer">Cursor</a> 🚀</p>
+        <motion.p
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+        >
+          Built by me with <a href="https://cursor.sh" target="_blank" rel="noopener noreferrer">Cursor</a> 🚀
+        </motion.p>
       </motion.footer>
       
       <Analytics />

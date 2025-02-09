@@ -10,6 +10,8 @@ const experiences = [
     period: 'March 2024 - Present',
     location: 'Irving, TX',
     logo: '/7-eleven-logo-1.svg',
+    projectLink: 'https://smart.link/0cqpga62gqmqk?site_id=2020-09-07&creative_id=7R-paid-lp&cp_1=home',
+    projectTooltip: 'View 7-Eleven Mobile App Platform',
     points: [
       'Leading development of next-generation retail technology solutions',
       'Architecting and implementing microservices using Node.js and TypeScript',
@@ -35,6 +37,8 @@ const experiences = [
     period: 'February 2023 - February 2024',
     location: 'Boston, MA',
     logo: '/liberty-mutual.svg',
+    projectLink: 'https://www.getcertainly.com/',
+    projectTooltip: 'View Certainly Insurance Platform',
     points: [
       'Promoted to Senior Software Engineer for exceptional performance and technical leadership',
       'Led development of high-performance web applications using NestJS and GraphQL, improving system response time by 40%',
@@ -50,6 +54,8 @@ const experiences = [
     period: 'February 2017 - May 2019',
     location: 'Hyderabad, India',
     logo: '/american-express-1.svg',
+    projectLink: 'https://www.americanexpress.com/en-us/benefits/rewards/membership-rewards/?inav=us_menu_rewards_benefits_rewards_membership_rewards',
+    projectTooltip: 'View Amex Membership Rewards Platform',
     points: [
       'Developed and maintained payment processing systems serving millions of transactions',
       'Implemented real-time transaction monitoring and fraud detection features',
@@ -77,6 +83,22 @@ export default function Experience() {
             <h3 className={styles.roleTitle}>{exp.title}</h3>
             <div className={styles.companyName}>
               @ {exp.company}
+              {exp.projectLink && (
+                <a 
+                  href={exp.projectLink} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className={styles.projectLink}
+                  title={exp.projectTooltip}
+                >
+                  <span className={styles.linkText}>View Project</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                    <polyline points="15 3 21 3 21 9"></polyline>
+                    <line x1="10" y1="14" x2="21" y2="3"></line>
+                  </svg>
+                </a>
+              )}
               <div className={styles.companyLogo}>
                 <img src={exp.logo} alt={exp.company} />
               </div>

@@ -72,8 +72,8 @@ export default function Projects() {
                       <img src="/external-link.svg" alt="Live Site" />
                     </a>
                   )}
-                </div>
-              </div>
+        </div>
+      </div>
               
               <div className={styles.projectInfo}>
                 <h3 className={styles.projectTitle}>{project.title}</h3>
