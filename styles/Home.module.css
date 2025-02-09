@@ -164,9 +164,11 @@
 .hero {
   min-height: 100vh;
   display: flex;
-  align-items: flex-start;
-  padding: 5rem 1rem 2rem;
+  align-items: center;
+  justify-content: center;
+  padding: 0 1rem;
   width: 100%;
+  position: relative;
 }
 
 .heroBackground {
@@ -183,11 +185,13 @@
   max-width: min(800px, 100%);
   background: transparent;
   backdrop-filter: none;
-  padding: 1rem;
+  padding: 2rem;
   margin: 0 auto;
   text-align: left;
   border: none;
   box-shadow: none;
+  position: relative;
+  z-index: 2;
 }
 
 .title {
@@ -317,7 +321,43 @@
 }
 
 .socialLinks {
-  display: none;
+  position: fixed;
+  left: 2rem;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 0;
+  z-index: 10;
+}
+
+.socialLinks::after {
+  content: '';
+  display: block;
+  width: 1px;
+  height: 90px;
+  margin: 0 auto;
+  background-color: #8892b0;
+}
+
+.socialLinks a {
+  width: 25px;
+  height: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.socialLinks img {
+  width: 20px;
+  height: 20px;
+  filter: brightness(0) saturate(100%) invert(92%) sepia(5%) saturate(1033%) hue-rotate(169deg) brightness(97%) contrast(87%);
+}
+
+.socialLinks a:hover img {
+  filter: brightness(0) saturate(100%) invert(88%) sepia(27%) saturate(757%) hue-rotate(108deg) brightness(101%) contrast(103%);
+  transform: translateY(-3px);
 }
 
 .footer {
@@ -486,11 +526,12 @@
   }
 
   .hero {
-    padding: 5rem 0.5rem 2rem;
+    padding: 6rem 1rem 2rem;
+    align-items: flex-start;
   }
 
   .heroContent {
-    padding: 1.5rem;
+    padding: 1rem;
   }
 
   .name {
@@ -511,13 +552,11 @@
   }
 
   .socialLinks {
-    position: relative;
-    right: auto;
-    bottom: auto;
+    position: static;
     flex-direction: row;
     justify-content: center;
-    padding: 1rem 0;
-    margin-top: 2rem;
+    gap: 2rem;
+    margin-top: 3rem;
   }
 
   .socialLinks::after {
@@ -551,7 +590,7 @@
 
 @media (max-width: 480px) {
   .hero {
-    padding: 4rem 0.75rem 1rem;
+    padding: 5rem 0.75rem 2rem;
   }
 
   .heroContent {
@@ -576,17 +615,8 @@
   }
 
   .socialLinks {
-    position: relative;
-    right: auto;
-    bottom: auto;
-    flex-direction: row;
-    justify-content: center;
-    padding: 1rem 0;
+    gap: 1.5rem;
     margin-top: 2rem;
-  }
-
-  .socialLinks::after {
-    display: none;
   }
 
   .sectionTitle {
@@ -779,37 +809,11 @@
   border-radius: 3px;
 }
 
-.contact {
-  padding: 8rem 0;
-  background: transparent;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.contactContent {
-  text-align: center;
-  max-width: 600px;
-  margin: 2rem auto;
-  padding: 2rem;
-  background: rgba(17, 34, 64, 0.1);
-  backdrop-filter: blur(4px);
-  border-radius: 10px;
-  border: 1px solid rgba(100, 255, 218, 0.05);
-  box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
-}
-
-.contactText {
-  color: #8892b0;
-  font-size: 1.2rem;
-  line-height: 1.6;
-  margin-bottom: 3rem;
-  font-family: "proxima nova light", "Helvetica Neue", Helvetica, Arial, sans-serif;
-}
-
+.contact,
+.contactContent,
+.contactText,
 .contactCta {
-  display: inline-block;
+  display: none;
 }
 
 @media (max-width: 768px) {
@@ -822,11 +826,6 @@
     max-width: 500px;
     margin: 0 auto;
   }
-
-  .contactText {
-    font-size: 1.1rem;
-    padding: 0 1rem;
-  }
 }
 
 @media (max-width: 480px) {
@@ -836,9 +835,5 @@
 
   .projectDescription {
     font-size: 0.9rem;
-  }
-
-  .contactText {
-    font-size: 1rem;
   }
 }

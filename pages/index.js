@@ -379,24 +379,19 @@ export default function Home() {
               <span className={styles.greeting}>Hi, my name is</span>
               <span className={styles.name}>Harsha Vippala</span>
               <span className={styles.role}>I build things for the web</span>
-          </h1>
+            </h1>
             <p className={styles.description}>
-              I'm a software engineer interested in web development and cloud technologies. 
-              Currently working at Liberty Mutual Insurance.
+              I'm a software engineer specializing in building exceptional digital experiences. 
+              Currently working at Liberty Mutual Insurance, focused on web development and cloud technologies.
             </p>
           </motion.div>
         </motion.section>
 
         <motion.div 
           className={styles.socialLinks}
-          initial={{ opacity: 0, x: 50 }}
+          initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ 
-            duration: 0.8, 
-            delay: 1,
-            type: "spring",
-            stiffness: 100
-          }}
+          transition={{ duration: 0.8, delay: 1 }}
         >
           {[
             { href: "https://github.com/harshavippala", icon: "/github.svg", alt: "GitHub" },
@@ -408,14 +403,6 @@ export default function Home() {
               href={social.href}
               target="_blank"
               rel="noopener noreferrer"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{
-                duration: 0.5,
-                delay: 1.2 + index * 0.1,
-                type: "spring",
-                stiffness: 120
-              }}
               whileHover={{ y: -5, scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -464,28 +451,11 @@ export default function Home() {
                     {project.tech.map((tech, i) => (
                       <span key={i} className={styles.tech}>{tech}</span>
                     ))}
-        </div>
-        </div>
-      </div>
+                  </div>
+                </div>
+              </div>
             ))}
           </div>
-        </section>
-
-        <section id="contact" className={styles.contact}>
-          <h2 className={styles.sectionTitle}>
-            <span className={styles.sectionNumber}>03.</span>Contact
-          </h2>
-          <div className={styles.contactContent}>
-            <p>
-              I'm currently open to new opportunities. Feel free to reach out if you'd 
-              like to connect or discuss potential collaborations.
-            </p>
-            <div className={styles.cta}>
-              <a href="mailto:harsha.vippala@gmail.com" className={styles.ctaButton}>
-                Get In Touch
-              </a>
-            </div>
-      </div>
         </section>
 
       </main>
