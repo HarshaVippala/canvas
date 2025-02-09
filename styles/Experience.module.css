@@ -174,4 +174,189 @@
   .points li {
     font-size: 0.9rem;
   }
+}
+
+.experienceSection {
+  padding: 6rem 2rem;
+  position: relative;
+  z-index: 2;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.sectionTitle {
+  color: #ccd6f6;
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+  font-family: 'Space Grotesk', sans-serif;
+  position: relative;
+  padding-left: 2rem;
+  text-align: left;
+}
+
+.sectionTitle::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 1rem;
+  height: 2px;
+  background-color: #64ffda;
+}
+
+.timeline {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem 0;
+}
+
+.timelineContent {
+  background: rgba(17, 34, 64, 0.3);
+  padding: 2.5rem;
+  border-radius: 12px;
+  border: 1px solid rgba(100, 255, 218, 0.1);
+  box-shadow: 0 10px 30px -10px rgba(2, 12, 27, 0.7);
+  margin-bottom: 3rem;
+  position: relative;
+}
+
+.roleTitle {
+  color: #e6f1ff;
+  font-size: 1.4rem;
+  font-family: 'Space Mono', monospace;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.companyName {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: #64ffda;
+  font-size: 1.2rem;
+  font-family: 'Space Mono', monospace;
+  margin: 0.5rem 0;
+}
+
+.companyLogo {
+  position: absolute;
+  right: 2rem;
+  top: 2rem;
+  width: 150px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+.companyLogo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: brightness(0) saturate(100%) invert(100%);
+  opacity: 0.9;
+}
+
+.period {
+  color: #8892b0;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.9rem;
+  margin: 1rem 0;
+}
+
+.location {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #8892b0;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.9rem;
+  margin-bottom: 2rem;
+}
+
+.points {
+  list-style: none;
+  padding: 0;
+  margin: 2rem 0;
+  display: grid;
+  gap: 1.2rem;
+}
+
+.points li {
+  color: #a8b2d1;
+  font-family: 'Inter', sans-serif;
+  padding-left: 1.75rem;
+  position: relative;
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+.points li::before {
+  content: '▹';
+  position: absolute;
+  left: 0;
+  color: #64ffda;
+  font-size: 1.2rem;
+}
+
+.techStack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(100, 255, 218, 0.1);
+}
+
+.tech {
+  color: #64ffda;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.85rem;
+  background: rgba(100, 255, 218, 0.05);
+  padding: 0.6rem 1rem;
+  border-radius: 4px;
+  border: 1px solid rgba(100, 255, 218, 0.1);
+}
+
+@media (max-width: 768px) {
+  .experienceSection {
+    padding: 4rem 1.5rem;
+  }
+
+  .sectionTitle {
+    font-size: 2rem;
+    padding-left: 1.5rem;
+  }
+
+  .companyLogo {
+    width: 120px;
+    height: 60px;
+    right: 1.5rem;
+    top: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .experienceSection {
+    padding: 3rem 1rem;
+  }
+
+  .sectionTitle {
+    font-size: 1.75rem;
+    padding-left: 1rem;
+  }
+
+  .companyLogo {
+    width: 100px;
+    height: 50px;
+    right: 1rem;
+    top: 1rem;
+  }
+
+  .points li {
+    font-size: 0.9rem;
+    padding-left: 1.5rem;
+  }
 } 

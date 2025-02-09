@@ -14,46 +14,59 @@ const skills = {
 
 const experiences = [
   {
-    title: 'Software Engineer',
-    company: 'Liberty Mutual Insurance',
-    period: 'February 2023 - Present',
-    location: 'Boston, MA',
-    logo: '/liberty-mutual.svg',
+    title: 'Software Engineer II',
+    company: '7-Eleven',
+    period: 'March 2024 - Present',
+    location: 'Irving, TX',
+    logo: '/7-eleven-logo-1.svg',
     points: [
-      'Working on web applications for insurance services',
-      'Using AWS services for cloud infrastructure',
-      'Participating in code reviews and team discussions',
-      'Learning about cloud technologies and sharing with team'
+      'Leading development of next-generation retail technology solutions',
+      'Architecting and implementing microservices using Node.js and TypeScript',
+      'Building scalable APIs to support mobile and web applications',
+      'Collaborating with product teams to enhance digital customer experience',
+      'Implementing CI/CD pipelines and automated testing strategies'
     ],
-    tech: ['NestJS', 'AWS', 'TypeScript', 'GraphQL']
+    tech: ['Node.js', 'TypeScript', 'AWS', 'React', 'MongoDB', 'Docker']
   },
   {
-    title: 'Software Engineer',
+    title: 'Senior Software Engineer',
+    previousRole: {
+      title: 'Software Engineer',
+      period: 'September 2021 - February 2023',
+      points: [
+        'Developed and maintained core insurance platform features',
+        'Implemented RESTful APIs using NestJS and GraphQL',
+        'Collaborated with UX team to improve user interface design',
+        'Participated in code reviews and technical documentation'
+      ]
+    },
     company: 'Liberty Mutual Insurance',
-    period: 'September 2021 - February 2023',
+    period: 'February 2023 - February 2024',
     location: 'Boston, MA',
     logo: '/liberty-mutual.svg',
     points: [
-      'Developed web applications for insurance services',
-      'Created tests for code reliability',
-      'Worked on application performance',
-      'Collaborated with design team'
+      'Promoted to Senior Software Engineer for exceptional performance and technical leadership',
+      'Led development of high-performance web applications using NestJS and GraphQL, improving system response time by 40%',
+      'Architected and implemented cloud infrastructure using AWS services, resulting in 99.9% uptime',
+      'Mentored junior developers and conducted technical interviews for the team',
+      'Spearheaded the adoption of TypeScript and GraphQL, leading to 30% reduction in runtime errors'
     ],
-    tech: ['React', 'Node.js', 'Jest', 'AWS']
+    tech: ['NestJS', 'React', 'TypeScript', 'GraphQL', 'AWS', 'Node.js', 'Jest']
   },
   {
     title: 'Software Engineer',
     company: 'American Express',
     period: 'February 2017 - May 2019',
     location: 'Hyderabad, India',
-    logo: '/amex.svg',
+    logo: '/american-express-1.svg',
     points: [
-      'Built features for payment processing systems',
-      'Added monitoring and error handling',
-      'Worked on database optimizations',
-      'Learned about microservices'
+      'Developed and maintained payment processing systems serving millions of transactions',
+      'Implemented real-time transaction monitoring and fraud detection features',
+      'Optimized database queries resulting in 50% improvement in response times',
+      'Built microservices architecture using Spring Boot and Redis',
+      'Collaborated with global teams across multiple time zones'
     ],
-    tech: ['Spring Boot', 'MySQL', 'Redis', 'RabbitMQ']
+    tech: ['Spring Boot', 'MySQL', 'Redis', 'RabbitMQ', 'Java', 'Angular']
   }
 ];
 
@@ -416,32 +429,54 @@ export default function Home() {
         </motion.div>
 
         <section id="experience" className={styles.experience}>
-          <h2 className={styles.sectionTitle}>
-            <span className={styles.sectionNumber}>01.</span>Experience
-          </h2>
+          <h2 className={styles.sectionTitle}>Experience</h2>
           <div className={styles.timeline}>
             {experiences.map((exp, index) => (
-              <div key={exp.company + exp.period} className={styles.timelineItem}>
-                <div className={styles.timelineContent}>
-                  <div className={styles.companyHeader}>
-                    <div className={styles.companyLogo}>
-                      <img src={exp.logo} alt={exp.company} />
+              <div key={exp.company + exp.period} className={styles.timelineContent}>
+                <div className={styles.experienceHeader}>
+                  <div className={styles.roleInfo}>
+                    <h3 className={styles.roleTitle}>{exp.title}</h3>
+                    <div className={styles.companyName}>
+                      @ {exp.company}
+                      <div className={styles.companyLogo}>
+                        <img src={exp.logo} alt={exp.company} />
+                      </div>
                     </div>
-                    <div className={styles.companyInfo}>
-                      <h3>{exp.title} @ {exp.company}</h3>
-                      <p className={styles.period}>{exp.period}</p>
+                    <div className={styles.period}>{exp.period}</div>
+                    <div className={styles.location}>
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                        <circle cx="12" cy="10" r="3"></circle>
+                      </svg>
+                      {exp.location}
                     </div>
                   </div>
-                  <ul className={styles.points}>
-                    {exp.points.map((point, i) => (
-                      <li key={i}>{point}</li>
-                    ))}
-                  </ul>
-                  <div className={styles.techStack}>
-                    {exp.tech.map((tech, i) => (
-                      <span key={i} className={styles.tech}>{tech}</span>
-                    ))}
+                </div>
+
+                <ul className={styles.points}>
+                  {exp.points.map((point, i) => (
+                    <li key={i}>{point}</li>
+                  ))}
+                </ul>
+
+                {exp.previousRole && (
+                  <div className={styles.previousRole}>
+                    <div className={styles.roleTransition}>
+                      <span className={styles.previousRoleTitle}>{exp.previousRole.title}</span>
+                      <div className={styles.previousRolePeriod}>{exp.previousRole.period}</div>
+                    </div>
+                    <ul className={styles.points}>
+                      {exp.previousRole.points.map((point, i) => (
+                        <li key={i}>{point}</li>
+                      ))}
+                    </ul>
                   </div>
+                )}
+
+                <div className={styles.techStack}>
+                  {exp.tech.map((tech, i) => (
+                    <span key={i} className={styles.tech}>{tech}</span>
+                  ))}
                 </div>
               </div>
             ))}
@@ -449,9 +484,7 @@ export default function Home() {
         </section>
 
         <section id="projects" className={styles.projects}>
-          <h2 className={styles.sectionTitle}>
-            <span className={styles.sectionNumber}>02.</span>Projects
-          </h2>
+          <h2 className={styles.sectionTitle}>Projects</h2>
           <div className={styles.projectsGrid}>
             {projects.map((project, index) => (
               <div key={project.title} className={styles.projectCard}>
@@ -462,11 +495,11 @@ export default function Home() {
                     {project.tech.map((tech, i) => (
                       <span key={i} className={styles.tech}>{tech}</span>
                     ))}
-        </div>
-        </div>
-      </div>
+                  </div>
+                </div>
+              </div>
             ))}
-      </div>
+          </div>
         </section>
 
       </main>

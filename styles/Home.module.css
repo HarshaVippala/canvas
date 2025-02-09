@@ -15,9 +15,9 @@
   z-index: 2;
   background: transparent;
   width: 100%;
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
-  padding: 0;
+  padding: 0 4rem;
 }
 
 .sectionWrapper {
@@ -147,27 +147,32 @@
 
 .sectionTitle {
   color: #ccd6f6;
-  font-size: 2rem;
-  margin-bottom: 3rem;
-  display: flex;
-  align-items: center;
-  text-shadow: 0 0 15px rgba(204, 214, 246, 0.2);
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  margin-bottom: 4rem;
+  font-family: 'Space Grotesk', sans-serif;
+  position: relative;
+  padding-bottom: 1rem;
+  text-align: center;
 }
 
 .sectionTitle::after {
   content: '';
-  display: block;
-  width: 300px;
-  height: 1px;
-  background-color: #233554;
-  margin-left: 2rem;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(90deg, #64ffda, rgba(100, 255, 218, 0.2));
+  border-radius: 2px;
 }
 
 .hero {
   min-height: 100vh;
   display: flex;
   align-items: center;
-  padding: 0 1.5rem;
+  justify-content: center;
+  padding: 6rem 1.5rem;
   width: 100%;
   position: relative;
   background: transparent;
@@ -184,12 +189,13 @@
 }
 
 .heroContent {
-  max-width: min(800px, 100%);
-  padding: 0 1rem;
+  max-width: min(1000px, 100%);
+  padding: 4rem 2rem;
   margin: 0 auto;
   text-align: left;
   position: relative;
   z-index: 2;
+  transform: translateY(5%);
 }
 
 .title {
@@ -209,7 +215,7 @@
 
 .name {
   color: #e6f1ff;
-  font-size: clamp(2.5rem, 8vw, 4rem);
+  font-size: clamp(3rem, 8vw, 5rem);
   font-weight: 600;
   display: block;
   margin-bottom: 1rem;
@@ -220,7 +226,7 @@
 
 .role {
   color: #a8b2d1;
-  font-size: clamp(1.5rem, 5vw, 2.5rem);
+  font-size: clamp(1.8rem, 5vw, 3rem);
   display: block;
   margin-bottom: 2rem;
   line-height: 1.3;
@@ -424,18 +430,178 @@
 
 .timelineContent {
   background: rgba(17, 34, 64, 0.3);
-  padding: 2rem;
-  border-radius: 8px;
+  padding: 2.5rem;
+  border-radius: 12px;
   transition: all 0.3s ease;
   backdrop-filter: blur(10px);
   border: 1px solid rgba(100, 255, 218, 0.1);
   box-shadow: 0 10px 30px -10px rgba(2, 12, 27, 0.7);
+  margin-bottom: 3rem;
+  position: relative;
+  overflow: visible;
 }
 
 .timelineContent:hover {
-  transform: translateX(10px);
+  transform: translateY(-5px);
   background: rgba(17, 34, 64, 0.5);
   border-color: rgba(100, 255, 218, 0.2);
+}
+
+.timelineContent:hover .companyLogo img {
+  opacity: 1;
+  transform: scale(1.05);
+  filter: brightness(0) saturate(100%) invert(95%) sepia(12%) saturate(1000%) hue-rotate(180deg) brightness(105%) contrast(105%);
+}
+
+.timelineContent[data-company="7-Eleven"] .companyLogo img {
+  filter: brightness(0) saturate(100%) invert(80%) sepia(50%) saturate(400%) hue-rotate(100deg) brightness(95%) contrast(95%);
+}
+
+.timelineContent[data-company="Liberty-Mutual"] .companyLogo img {
+  filter: brightness(0) saturate(100%) invert(85%) sepia(20%) saturate(500%) hue-rotate(180deg) brightness(100%) contrast(100%);
+}
+
+.timelineContent[data-company="American-Express"] .companyLogo img {
+  filter: brightness(0) saturate(100%) invert(90%) sepia(10%) saturate(300%) hue-rotate(180deg) brightness(105%) contrast(105%);
+}
+
+.roleTransition {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.roleTitle {
+  color: #e6f1ff;
+  font-size: clamp(1.2rem, 3vw, 1.4rem);
+  font-family: 'Space Mono', monospace;
+  font-weight: 600;
+}
+
+.arrow {
+  color: #64ffda;
+  font-size: 1.4rem;
+  margin: 0 0.5rem;
+  opacity: 0.9;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { opacity: 0.6; }
+  50% { opacity: 1; }
+  100% { opacity: 0.6; }
+}
+
+.companyName {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #64ffda;
+  font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+  font-family: 'Space Mono', monospace;
+  margin: 0.5rem 0;
+  position: relative;
+}
+
+.companyLogo {
+  position: absolute;
+  right: 2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 200px;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  background: transparent;
+}
+
+.companyLogo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: brightness(0) saturate(100%) invert(95%) sepia(5%) saturate(1000%) hue-rotate(180deg) brightness(105%) contrast(105%);
+  opacity: 0.9;
+  transition: all 0.3s ease;
+}
+
+.period {
+  color: #8892b0;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.9rem;
+  margin: 1rem 0;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.location {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #8892b0;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.9rem;
+  margin-bottom: 2rem;
+}
+
+.location svg {
+  width: 16px;
+  height: 16px;
+  color: #64ffda;
+}
+
+.points {
+  list-style: none;
+  padding: 0;
+  margin: 2rem 0;
+  display: grid;
+  gap: 1.2rem;
+}
+
+.points li {
+  color: #a8b2d1;
+  font-family: 'Inter', sans-serif;
+  padding-left: 1.75rem;
+  position: relative;
+  line-height: 1.6;
+  font-size: clamp(0.95rem, 2vw, 1rem);
+}
+
+.points li::before {
+  content: '▹';
+  position: absolute;
+  left: 0;
+  color: #64ffda;
+  font-size: 1.2rem;
+}
+
+.techStack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(100, 255, 218, 0.1);
+}
+
+.tech {
+  color: #64ffda;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.85rem;
+  background: rgba(100, 255, 218, 0.05);
+  padding: 0.6rem 1rem;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(100, 255, 218, 0.1);
+}
+
+.tech:hover {
+  background: rgba(100, 255, 218, 0.1);
+  transform: translateY(-2px);
 }
 
 .companyHeader {
@@ -443,39 +609,6 @@
   align-items: center;
   gap: 2rem;
   margin-bottom: 2rem;
-}
-
-.companyLogo {
-  width: 50px;
-  height: 50px;
-  border-radius: 8px;
-  background: rgba(100, 255, 218, 0.05);
-  padding: 0.75rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid rgba(100, 255, 218, 0.1);
-  transition: all 0.3s ease;
-  flex-shrink: 0;
-}
-
-.companyLogo img {
-  width: 100%;
-  height: 100%;
-  filter: brightness(0) saturate(100%) invert(92%) sepia(5%) saturate(1033%) hue-rotate(169deg) brightness(97%) contrast(87%);
-  transition: all 0.3s ease;
-  object-fit: contain;
-}
-
-.timelineContent:hover .companyLogo {
-  background: rgba(100, 255, 218, 0.1);
-  border-color: rgba(100, 255, 218, 0.2);
-  transform: translateY(-2px) scale(1.05);
-  box-shadow: 0 5px 15px rgba(100, 255, 218, 0.1);
-}
-
-.timelineContent:hover .companyLogo img {
-  filter: brightness(0) saturate(100%) invert(88%) sepia(27%) saturate(757%) hue-rotate(108deg) brightness(101%) contrast(103%);
 }
 
 .companyInfo {
@@ -489,112 +622,40 @@
   margin-bottom: 0.5rem;
   letter-spacing: -0.02em;
   text-shadow: 0 0 10px rgba(230, 241, 255, 0.1);
+  line-height: 1.4;
 }
 
-.period {
-  font-family: 'Space Mono', monospace;
-  color: #64ffda;
-  font-size: 0.9rem;
-  margin-bottom: 0;
-  letter-spacing: 0.05em;
-  opacity: 0.8;
-}
-
-.points {
-  list-style: none;
-  padding: 0;
-  margin: 0 0 2rem 0;
-}
-
-.points li {
-  color: #a8b2d1;
-  font-family: 'Inter', sans-serif;
-  margin-bottom: 1rem;
-  padding-left: 1.75rem;
+.companyInfo h3 span {
   position: relative;
-  line-height: 1.6;
+  display: inline-block;
 }
 
-.points li::before {
-  content: '▹';
-  position: absolute;
-  left: 0;
+.companyInfo h3 span.arrow {
   color: #64ffda;
+  margin: 0 0.5rem;
   font-size: 1.2rem;
-  line-height: 1.2;
+  opacity: 0.9;
 }
 
-.techStack {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
+.previousRole {
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(100, 255, 218, 0.1);
 }
 
-.tech {
-  color: #64ffda;
+.previousRoleTitle {
+  color: #ccd6f6;
+  font-size: clamp(1.1rem, 2.5vw, 1.3rem);
   font-family: 'Space Mono', monospace;
-  font-size: 0.8rem;
-  background: rgba(100, 255, 218, 0.05);
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
-  transition: all 0.3s ease;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 0.5rem;
 }
 
-.timelineContent:hover .tech {
-  background: rgba(100, 255, 218, 0.1);
-}
-
-@media (max-width: 768px) {
-  .experience {
-    padding: 4rem 1.5rem;
-  }
-
-  .timelineItem {
-    padding-left: 2.5rem;
-  }
-
-  .companyHeader {
-    gap: 1.5rem;
-  }
-
-  .companyLogo {
-    width: 45px;
-    height: 45px;
-  }
-}
-
-@media (max-width: 480px) {
-  .experience {
-    padding: 3rem 1rem;
-  }
-
-  .timelineItem {
-    padding-left: 2rem;
-  }
-
-  .timelineItem::before {
-    width: 10px;
-    height: 10px;
-  }
-
-  .companyHeader {
-    gap: 1rem;
-  }
-
-  .companyLogo {
-    width: 40px;
-    height: 40px;
-    padding: 0.6rem;
-  }
-
-  .companyInfo h3 {
-    font-size: 1.2rem;
-  }
-
-  .points li {
-    font-size: 0.9rem;
-    padding-left: 1.5rem;
-  }
+.previousRolePeriod {
+  color: #8892b0;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.9rem;
 }
 
 .projects {
@@ -722,23 +783,75 @@
 }
 
 @media (max-width: 768px) {
-  .projectsGrid {
-    grid-template-columns: 1fr;
-    padding: 0 1.5rem;
+  .experience {
+    padding: 4rem 1.5rem;
   }
 
-  .projectCard {
-    max-width: 500px;
-    margin: 0 auto;
+  .timelineItem {
+    padding-left: 2.5rem;
+  }
+
+  .main {
+    padding: 0 2rem;
+  }
+
+  .heroContent {
+    padding: 2rem 1rem;
+    transform: translateY(0);
+  }
+
+  .companyLogo {
+    width: 160px;
+    height: 100px;
+    right: 1.5rem;
+    top: 2rem;
+    transform: none;
   }
 }
 
 @media (max-width: 480px) {
-  .projectTitle {
+  .experience {
+    padding: 3rem 1rem;
+  }
+
+  .timelineItem {
+    padding-left: 2rem;
+  }
+
+  .timelineItem::before {
+    width: 10px;
+    height: 10px;
+  }
+
+  .main {
+    padding: 0 1rem;
+  }
+
+  .companyLogo {
+    width: 140px;
+    height: 90px;
+    right: 1rem;
+    top: 1.5rem;
+  }
+
+  .companyInfo h3 {
     font-size: 1.2rem;
   }
 
-  .projectDescription {
+  .points li {
     font-size: 0.9rem;
+    padding-left: 1.5rem;
   }
+}
+
+.experienceHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.roleInfo {
+  flex: 1;
 }
