@@ -346,7 +346,8 @@ export default function Home() {
         <title>Harsha Vippala | Software Engineer</title>
         <meta name="description" content="Software engineer specializing in web development and cloud technologies" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-          <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.ico" />
+        <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
         </Head>
 
       <main className={styles.main}>
