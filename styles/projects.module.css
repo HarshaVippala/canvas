@@ -65,51 +65,64 @@
 
 .container {
   min-height: 100vh;
-  padding: 6rem 2rem;
+  padding: 2rem 1rem;
   max-width: 1200px;
   margin: 0 auto;
+  position: relative;
+  z-index: 2;
 }
 
 .content {
+  width: 100%;
   max-width: 1000px;
   margin: 0 auto;
+  padding: 1rem;
 }
 
 .title {
   color: #ccd6f6;
-  font-size: 2.5rem;
-  margin-bottom: 3rem;
+  font-size: clamp(1.5rem, 5vw, 2.5rem);
+  margin-bottom: 2rem;
   font-family: 'Space Grotesk', sans-serif;
   position: relative;
+  text-align: center;
 }
 
 .title::after {
   content: '';
   display: block;
-  width: 300px;
+  width: min(300px, 80%);
   height: 1px;
   background-color: #233554;
-  margin-top: 1rem;
+  margin: 1rem auto 0;
 }
 
 .projectsGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
   gap: 2rem;
-  margin-top: 2rem;
+  width: 100%;
+  padding: 1rem;
 }
 
 .projectCard {
-  background-color: #112240;
-  border-radius: 4px;
+  background: rgba(17, 34, 64, 0.1);
+  border-radius: 12px;
   overflow: hidden;
-  transition: transform 0.3s ease;
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(100, 255, 218, 0.05);
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .projectImage {
   position: relative;
   padding-top: 56.25%; /* 16:9 Aspect Ratio */
   overflow: hidden;
+  background: rgba(10, 25, 47, 0.2);
 }
 
 .projectImage img {
@@ -131,54 +144,62 @@
   top: 1rem;
   right: 1rem;
   display: flex;
-  gap: 1rem;
+  gap: 0.75rem;
   z-index: 2;
 }
 
 .projectLinks a {
-  width: 22px;
-  height: 22px;
-  background-color: #0a192f;
+  width: 2.5rem;
+  height: 2.5rem;
+  background: rgba(10, 25, 47, 0.1);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(100, 255, 218, 0.05);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: transform 0.2s ease;
+  transition: all 0.3s ease;
 }
 
 .projectLinks a:hover {
   transform: translateY(-3px);
+  background: rgba(100, 255, 218, 0.1);
+  border-color: #64ffda;
+  box-shadow: 0 0 20px rgba(100, 255, 218, 0.3);
 }
 
 .projectLinks img {
-  width: 14px;
-  height: 14px;
-  filter: invert(92%) sepia(5%) saturate(1033%) hue-rotate(169deg) brightness(97%) contrast(87%);
+  width: 1.25rem;
+  height: 1.25rem;
+  filter: brightness(0) saturate(100%) invert(92%) sepia(5%) saturate(1033%) hue-rotate(169deg) brightness(97%) contrast(87%);
 }
 
 .projectInfo {
-  padding: 2rem;
+  padding: 1.5rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .projectTitle {
   color: #ccd6f6;
-  font-size: 1.3rem;
+  font-size: clamp(1.1rem, 4vw, 1.3rem);
   margin-bottom: 1rem;
   font-family: 'Space Grotesk', sans-serif;
 }
 
 .projectDescription {
   color: #8892b0;
-  font-size: 0.95rem;
+  font-size: clamp(0.9rem, 3vw, 1rem);
   line-height: 1.6;
   margin-bottom: 1.5rem;
-  font-family: 'Inter', sans-serif;
+  flex: 1;
 }
 
 .techList {
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: 0.75rem;
   list-style: none;
   padding: 0;
   margin: 0;
@@ -187,49 +208,84 @@
 .techList li {
   color: #64ffda;
   font-family: 'Space Grotesk', sans-serif;
-  font-size: 0.8rem;
-  background-color: rgba(100, 255, 218, 0.1);
+  font-size: clamp(0.7rem, 2.5vw, 0.8rem);
+  background: rgba(100, 255, 218, 0.1);
   padding: 0.35rem 0.8rem;
   border-radius: 3px;
+  white-space: nowrap;
 }
 
+/* Touch Device Optimizations */
+@media (hover: none) {
+  .projectCard {
+    transform: none !important;
+  }
+  
+  .projectLinks a {
+    width: 3rem;
+    height: 3rem;
+  }
+  
+  .projectLinks img {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+}
+
+/* Tablet Styles */
 @media (max-width: 768px) {
   .container {
-    padding: 4rem 1.5rem;
+    padding: 1rem;
   }
 
-  .title {
-    font-size: 2rem;
-  }
-
-  .title::after {
-    width: 200px;
+  .content {
+    padding: 0.5rem;
   }
 
   .projectsGrid {
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
     gap: 1.5rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .container {
-    padding: 3rem 1rem;
-  }
-
-  .title {
-    font-size: 1.75rem;
+    padding: 0.5rem;
   }
 
   .projectInfo {
-    padding: 1.5rem;
+    padding: 1.25rem;
+  }
+}
+
+/* Mobile Styles */
+@media (max-width: 480px) {
+  .container {
+    padding: 0.5rem;
   }
 
-  .projectTitle {
-    font-size: 1.2rem;
+  .content {
+    padding: 0.25rem;
   }
 
-  .projectDescription {
-    font-size: 0.9rem;
+  .projectsGrid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    padding: 0.25rem;
+  }
+
+  .projectInfo {
+    padding: 1rem;
+  }
+
+  .projectLinks {
+    top: 0.75rem;
+    right: 0.75rem;
+  }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+  .projectCard {
+    background: rgba(17, 34, 64, 0.2);
+  }
+  
+  .projectLinks a {
+    background: rgba(10, 25, 47, 0.2);
   }
 }
