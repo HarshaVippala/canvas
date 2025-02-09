@@ -349,7 +349,7 @@ export default function Home() {
         <title>Harsha Vippala | Software Engineer</title>
         <meta name="description" content="Software engineer specializing in web development and cloud technologies" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="icon" href="/favicon.ico" />
+          <link rel="icon" href="/favicon.ico" />
         <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
         </Head>
 
@@ -383,7 +383,7 @@ export default function Home() {
               <span className={styles.greeting}>Hi, my name is</span>
               <span className={styles.name}>Harsha Vippala</span>
               <span className={styles.role}>I build things for the web</span>
-            </h1>
+          </h1>
             <p className={styles.description}>
               I'm a software engineer specializing in building exceptional digital experiences. 
               Currently working at Liberty Mutual Insurance, focused on web development and cloud technologies.
@@ -462,11 +462,11 @@ export default function Home() {
                     {project.tech.map((tech, i) => (
                       <span key={i} className={styles.tech}>{tech}</span>
                     ))}
-                  </div>
-                </div>
-              </div>
+        </div>
+        </div>
+      </div>
             ))}
-          </div>
+      </div>
         </section>
 
       </main>

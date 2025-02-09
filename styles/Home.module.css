@@ -464,6 +464,7 @@
   height: 100%;
   filter: brightness(0) saturate(100%) invert(92%) sepia(5%) saturate(1033%) hue-rotate(169deg) brightness(97%) contrast(87%);
   transition: all 0.3s ease;
+  object-fit: contain;
 }
 
 .timelineContent:hover .companyLogo {
@@ -471,6 +472,10 @@
   border-color: rgba(100, 255, 218, 0.2);
   transform: translateY(-2px) scale(1.05);
   box-shadow: 0 5px 15px rgba(100, 255, 218, 0.1);
+}
+
+.timelineContent:hover .companyLogo img {
+  filter: brightness(0) saturate(100%) invert(88%) sepia(27%) saturate(757%) hue-rotate(108deg) brightness(101%) contrast(103%);
 }
 
 .companyInfo {
