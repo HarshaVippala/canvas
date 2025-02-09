@@ -18,6 +18,7 @@ const experiences = [
     company: 'Liberty Mutual Insurance',
     period: 'February 2023 - Present',
     location: 'Boston, MA',
+    logo: '/liberty-mutual.svg',
     points: [
       'Working on web applications for insurance services',
       'Using AWS services for cloud infrastructure',
@@ -31,6 +32,7 @@ const experiences = [
     company: 'Liberty Mutual Insurance',
     period: 'September 2021 - February 2023',
     location: 'Boston, MA',
+    logo: '/liberty-mutual.svg',
     points: [
       'Developed web applications for insurance services',
       'Created tests for code reliability',
@@ -44,6 +46,7 @@ const experiences = [
     company: 'American Express',
     period: 'February 2017 - May 2019',
     location: 'Hyderabad, India',
+    logo: '/amex.svg',
     points: [
       'Built features for payment processing systems',
       'Added monitoring and error handling',
@@ -420,8 +423,15 @@ export default function Home() {
             {experiences.map((exp, index) => (
               <div key={exp.company + exp.period} className={styles.timelineItem}>
                 <div className={styles.timelineContent}>
-                  <h3>{exp.title} @ {exp.company}</h3>
-                  <p className={styles.period}>{exp.period}</p>
+                  <div className={styles.companyHeader}>
+                    <div className={styles.companyLogo}>
+                      <img src={exp.logo} alt={exp.company} />
+                    </div>
+                    <div className={styles.companyInfo}>
+                      <h3>{exp.title} @ {exp.company}</h3>
+                      <p className={styles.period}>{exp.period}</p>
+                    </div>
+                  </div>
                   <ul className={styles.points}>
                     {exp.points.map((point, i) => (
                       <li key={i}>{point}</li>
