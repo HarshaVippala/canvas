@@ -318,34 +318,36 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 2;
+  z-index: 10;
+  background-color: transparent;
+  padding: 0.75rem;
+  border-radius: 8px;
+  overflow: visible;
 }
 
-.companyLogo img {
+.companyLogo svg {
   width: 100%;
   height: 100%;
-  object-fit: contain;
-  filter: brightness(1) saturate(100%);
-  opacity: 0.9;
-  transition: all 0.3s ease;
 }
 
-.timelineContent[data-company="7-Eleven"] .companyLogo img {
-  filter: brightness(1) saturate(100%);
+.companyLogo::after {
+  display: none;
 }
 
-.timelineContent[data-company="Liberty-Mutual"] .companyLogo img {
-  filter: brightness(1) saturate(100%);
+/* Company-specific styling */
+[data-company="7-Eleven"] .companyLogo {
+  background-color: transparent;
+  border: none;
 }
 
-.timelineContent[data-company="American-Express"] .companyLogo img {
-  filter: brightness(1) saturate(100%);
+[data-company="Liberty-Mutual-Insurance"] .companyLogo {
+  background-color: transparent;
+  border: none;
 }
 
-.timelineContent:hover .companyLogo img {
-  opacity: 1;
-  transform: scale(1.05);
-  filter: brightness(1.1) saturate(110%);
+[data-company="American-Express"] .companyLogo {
+  background-color: transparent;
+  border: none;
 }
 
 .period {

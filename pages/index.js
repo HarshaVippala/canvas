@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Analytics } from "@vercel/analytics/react";
 import { motion, useViewportScroll, useTransform } from "framer-motion";
 import styles from "/styles/Home.module.css";
@@ -6,10 +6,10 @@ import Head from "next/head";
 import * as THREE from 'three';
 
 const skills = {
-  languages: ['JavaScript', 'TypeScript', 'Python', 'Java', 'SQL'],
-  frameworks: ['React', 'Node.js', 'Spring Boot', 'Next.js', 'Express.js'],
-  cloud: ['AWS Lambda', 'S3', 'EC2', 'RDS', 'CloudWatch'],
-  tools: ['Docker', 'Git', 'Jenkins', 'Jira', 'Terraform']
+  languages: ['JavaScript', 'TypeScript', 'Python', 'Java', 'Groovy', 'Go', 'SQL'],
+  frameworks: ['React', 'Node.js', 'NestJS', 'Spring Boot', 'Next.js', 'Express.js', 'GraphQL', 'gRPC', 'Kafka', 'RabbitMQ'],
+  cloud: ['AWS Lambda', 'S3', 'EC2', 'RDS', 'CloudWatch', 'Redshift', 'DynamoDB', 'ECS', 'ELB', 'EKS', 'IAM', 'GCP'],
+  tools: ['Docker', 'Git', 'Jenkins', 'Jira', 'Terraform', 'Kubernetes', 'Cypress.io', 'Jest', 'JUnit', 'Datadog', 'Splunk', 'Grafana', 'Kibana', 'Ansible', 'Bamboo']
 };
 
 const experiences = [
@@ -20,13 +20,14 @@ const experiences = [
     location: 'Irving, TX',
     logo: '/7-eleven-logo-1.svg',
     points: [
-      'Leading development of next-generation retail technology solutions',
-      'Architecting and implementing microservices using Node.js and TypeScript',
-      'Building scalable APIs to support mobile and web applications',
-      'Collaborating with product teams to enhance digital customer experience',
-      'Implementing CI/CD pipelines and automated testing strategies'
+      'Spearheaded backend development for 7-Eleven\'s self-checkout mobile application by architecting and managing serverless microservices using AWS Lambda, MongoDB, and AWS services; processing approximately $0.5M in orders monthly across 60 active stores in the US and Canada',
+      'Led the complete modernization of legacy systems by upgrading Node.js and Mongoose versions and refactoring critical services, resulting in significant latency reduction and improved system stability',
+      'Engineered IoT integrations at in-store confirmation stations by implementing a QR code validation system and synchronized audio feedback for a seamless customer experience',
+      'Designed and implemented an end-to-end EBT payment processing solution, including onboarding a new payment processor and refining the tax engine for non-taxable items',
+      'Optimized backend performance through strategic refactoring and enhancements to MongoDB queries, increasing test coverage and operational efficiency',
+      'Independently managed the entire backend lifecycle for the self-checkout channel, ensuring 24/7 system availability and real-time integration between customer-facing and store applications'
     ],
-    tech: ['Node.js', 'TypeScript', 'AWS', 'React', 'MongoDB', 'Docker']
+    tech: ['Node.js', 'TypeScript', 'AWS Lambda', 'MongoDB', 'Serverless', 'IoT', 'Microservices']
   },
   {
     title: 'Senior Software Engineer',
@@ -34,39 +35,42 @@ const experiences = [
       title: 'Software Engineer',
       period: 'September 2021 - February 2023',
       points: [
-        'Developed and maintained core insurance platform features',
-        'Implemented RESTful APIs using NestJS and GraphQL',
-        'Collaborated with UX team to improve user interface design',
-        'Participated in code reviews and technical documentation'
+        'Worked in the quoting domain, responsible for providing quotes for different insurance products, handling an average of 87,000 monthly visits',
+        'Implemented a user data tracking feature, capturing interactions of users in the quote flow, empowering the business team to identify customer behavior',
+        'Increased conversion rates by 7% through data-driven decisions about product development and targeted marketing campaigns',
+        'Maintained a dynamic client UI through regular updates of mock designs and components, ensuring robust end-to-end testing'
       ]
     },
     company: 'Liberty Mutual Insurance',
     period: 'February 2023 - February 2024',
-    location: 'Boston, MA',
+    location: 'Irving, TX',
     logo: '/liberty-mutual.svg',
     points: [
-      'Promoted to Senior Software Engineer for exceptional performance and technical leadership',
-      'Led development of high-performance web applications using NestJS and GraphQL, improving system response time by 40%',
-      'Architected and implemented cloud infrastructure using AWS services, resulting in 99.9% uptime',
-      'Mentored junior developers and conducted technical interviews for the team',
-      'Spearheaded the adoption of TypeScript and GraphQL, leading to 30% reduction in runtime errors'
+      'Engineered and optimized Node.js-based RESTful APIs enabling seamless integration with key insurance vendors such as Zebra and Insurify',
+      'Designed and implemented a reporting API using AWS Redshift data warehouse for on-demand sales reports, streamlining manual workflows',
+      'Utilized GraphQL and gRPC to architect robust APIs, ensuring efficient third-party system integration',
+      'Managed and monitored production systems to ensure availability and performance, proactively resolving issues',
+      'Led a team of interns in implementing a product availability manager service using AWS Lambda',
+      'Supervised the entire redesign of the user account page on the website'
     ],
-    tech: ['NestJS', 'React', 'TypeScript', 'GraphQL', 'AWS', 'Node.js', 'Jest']
+    tech: ['Node.js', 'React', 'TypeScript', 'GraphQL', 'gRPC', 'AWS', 'Redshift', 'Lambda']
   },
   {
     title: 'Software Engineer',
     company: 'American Express',
-    period: 'February 2017 - May 2019',
+    period: 'April 2018 - May 2019',
     location: 'Hyderabad, India',
     logo: '/american-express-1.svg',
     points: [
-      'Developed and maintained payment processing systems serving millions of transactions',
-      'Implemented real-time transaction monitoring and fraud detection features',
-      'Optimized database queries resulting in 50% improvement in response times',
-      'Built microservices architecture using Spring Boot and Redis',
-      'Collaborated with global teams across multiple time zones'
+      'Collaborated on Amex\'s representative-facing interface, leveraging the custom Amex React library',
+      'Integrated frontend seamlessly with backend using Spring, resulting in a simplified user experience for representatives',
+      'Implemented state management with Redux, optimizing data handling and ensuring efficient performance',
+      'Orchestrated real-time data synchronization through WebSockets, enhancing customer service responsiveness',
+      'Designed and implemented RESTful APIs using Spring MVC and Spring Boot',
+      'Implemented unit testing using JUnit and integration testing using Spring Boot Test',
+      'Used Spring Data JPA to access and manage data in a MySQL database'
     ],
-    tech: ['Spring Boot', 'MySQL', 'Redis', 'RabbitMQ', 'Java', 'Angular']
+    tech: ['Spring Boot', 'React', 'Redux', 'WebSockets', 'MySQL', 'Java', 'JUnit', 'JPA']
   }
 ];
 
@@ -97,9 +101,36 @@ export default function Home() {
   const sceneRef = useRef(null);
   const cameraRef = useRef(null);
   const frameRef = useRef(null);
+  const [navStyle, setNavStyle] = useState('top');
+  const [activeSection, setActiveSection] = useState('about');
+  const [isNavVisible, setIsNavVisible] = useState(true);
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
+      const updateRendererSize = () => {
+        if (!rendererRef.current) return;
+        
+        const totalHeight = Math.max(
+          document.body.scrollHeight, 
+          document.documentElement.scrollHeight,
+          document.body.offsetHeight, 
+          document.documentElement.offsetHeight,
+          document.body.clientHeight, 
+          document.documentElement.clientHeight
+        );
+        
+        rendererRef.current.domElement.style.height = '100vh';
+        rendererRef.current.domElement.style.width = '100vw';
+        rendererRef.current.domElement.style.position = 'fixed';
+        rendererRef.current.domElement.style.top = '0';
+        rendererRef.current.domElement.style.left = '0';
+        rendererRef.current.domElement.style.right = '0';
+        rendererRef.current.domElement.style.bottom = '0';
+        rendererRef.current.domElement.style.zIndex = '0';
+        rendererRef.current.domElement.style.background = 'linear-gradient(to bottom, #0a192f, #112240)';
+        rendererRef.current.domElement.style.pointerEvents = 'none';
+      };
+
       const scene = new THREE.Scene();
       sceneRef.current = scene;
       
@@ -120,11 +151,17 @@ export default function Home() {
       renderer.setClearColor(0x0a192f, 1);
       renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
       document.body.appendChild(renderer.domElement);
+      
       renderer.domElement.style.position = 'fixed';
       renderer.domElement.style.top = '0';
       renderer.domElement.style.left = '0';
+      renderer.domElement.style.width = '100vw';
+      renderer.domElement.style.height = '100vh';
       renderer.domElement.style.zIndex = '0';
       renderer.domElement.style.background = 'linear-gradient(to bottom, #0a192f, #112240)';
+
+      // Apply styles to cover full page
+      updateRendererSize();
 
       // Create multiple star layers with different sizes and colors
       const createStarLayer = (count, size, colorRange) => {
@@ -296,29 +333,19 @@ export default function Home() {
       const interval = 1000 / 60; // 60 FPS target
 
       function animate() {
-        frameRef.current = requestAnimationFrame(animate);
-        
-        const currentTime = clock.getElapsedTime() * 1000;
-        const deltaTime = currentTime - lastTime;
-
-        if (deltaTime > interval) {
-          // Rotate star layers at different speeds
-          distantStars.rotation.y += 0.0001;
-          mediumStars.rotation.y += 0.00015;
-          brightStars.rotation.y += 0.0002;
-          spaceDust.rotation.y += 0.00005;
-
-          // Animate nebulae
-          nebulae.forEach((nebula, i) => {
-            nebula.rotation.x += 0.0001 * (i + 1);
-            nebula.rotation.y += 0.00015 * (i + 1);
-            
-            const pulse = Math.sin(currentTime * 0.0003 + i) * 0.15 + 0.85;
-            nebula.material.opacity = 0.3 * pulse;
-          });
-
-          renderer.render(scene, camera);
-          lastTime = currentTime - (deltaTime % interval);
+        if (sceneRef.current && cameraRef.current && rendererRef.current) {
+          // Ensure the camera is properly positioned
+          cameraRef.current.position.z = 1000;
+          
+          // Rotate the scene slightly for a subtle movement effect
+          sceneRef.current.rotation.x += 0.0003;
+          sceneRef.current.rotation.y += 0.0001;
+          
+          // Render the scene
+          rendererRef.current.render(sceneRef.current, cameraRef.current);
+          
+          // Request next animation frame
+          frameRef.current = requestAnimationFrame(animate);
         }
       }
       
@@ -329,30 +356,98 @@ export default function Home() {
       function handleResize() {
         clearTimeout(resizeTimeout);
         resizeTimeout = setTimeout(() => {
-          camera.aspect = window.innerWidth / window.innerHeight;
-          camera.updateProjectionMatrix();
-          renderer.setSize(window.innerWidth, window.innerHeight);
-          renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+          cameraRef.current.aspect = window.innerWidth / window.innerHeight;
+          cameraRef.current.updateProjectionMatrix();
+          rendererRef.current.setSize(window.innerWidth, window.innerHeight);
+          renderer.domElement.style.height = '100vh';
         }, 100);
       }
 
       window.addEventListener('resize', handleResize);
 
+      // Add scroll and resize event listeners
+      window.addEventListener('scroll', updateRendererSize);
+      window.addEventListener('resize', () => {
+        updateRendererSize();
+        
+        if (cameraRef.current) {
+          cameraRef.current.aspect = window.innerWidth / window.innerHeight;
+          cameraRef.current.updateProjectionMatrix();
+        }
+        
+        if (rendererRef.current) {
+          rendererRef.current.setSize(window.innerWidth, window.innerHeight);
+        }
+      });
+
+      // Clean up
       return () => {
         window.removeEventListener('scroll', handleScroll);
         window.removeEventListener('resize', handleResize);
         cancelAnimationFrame(frameRef.current);
         scene.clear();
-        renderer.dispose();
-        document.body.removeChild(renderer.domElement);
+        if (rendererRef.current && rendererRef.current.domElement) {
+          renderer.dispose();
+          document.body.removeChild(renderer.domElement);
+        }
       };
     }
   }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // Debounce the scroll event handling to improve performance
+      if (!handleScroll.timeout) {
+        handleScroll.timeout = setTimeout(() => {
+          // Change nav style based on scroll position
+          if (window.scrollY > 100 && navStyle === 'top') {
+            setIsNavVisible(false);
+            setTimeout(() => {
+              setNavStyle('right');
+              setIsNavVisible(true);
+            }, 150); // Reduced wait time for quicker transition
+          } else if (window.scrollY <= 100 && navStyle === 'right') {
+            setIsNavVisible(false);
+            setTimeout(() => {
+              setNavStyle('top');
+              setIsNavVisible(true);
+            }, 150); // Reduced wait time for quicker transition
+          }
+          
+          // Determine active section based on scroll position
+          const sections = ['about', 'experience', 'projects'];
+          
+          for (const section of sections) {
+            const element = document.getElementById(section);
+            if (element) {
+              const rect = element.getBoundingClientRect();
+              // Add a buffer to improve UX when detecting the active section
+              const buffer = 200;
+              
+              if (rect.top <= buffer && rect.bottom >= 0) {
+                setActiveSection(section);
+                break;
+              }
+            }
+          }
+          
+          handleScroll.timeout = null;
+        }, 5); // Even shorter timeout for more responsive scrolling
+      }
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      clearTimeout(handleScroll.timeout);
+    };
+  }, [navStyle]);
 
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
+      setActiveSection(sectionId);
     }
   };
 
@@ -446,16 +541,34 @@ export default function Home() {
         </Head>
 
       <main className={styles.main}>
-        <motion.nav 
-          className={styles.sideNav}
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-        >
-          <button onClick={() => scrollToSection('about')}>About</button>
-          <button onClick={() => scrollToSection('experience')}>Experience</button>
-          <button onClick={() => scrollToSection('projects')}>Projects</button>
-        </motion.nav>
+        {isNavVisible && (
+          <motion.nav 
+            className={`${styles.sideNav} ${navStyle === 'top' ? styles.sideNavTop : styles.sideNavRight}`}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.15, ease: "easeOut" }}
+          >
+            <button 
+              onClick={() => scrollToSection('about')}
+              className={activeSection === 'about' ? styles.active : ''}
+            >
+              About
+            </button>
+            <button 
+              onClick={() => scrollToSection('experience')}
+              className={activeSection === 'experience' ? styles.active : ''}
+            >
+              Experience
+            </button>
+            <button 
+              onClick={() => scrollToSection('projects')}
+              className={activeSection === 'projects' ? styles.active : ''}
+            >
+              Projects
+            </button>
+          </motion.nav>
+        )}
 
         <motion.section 
           id="about" 
@@ -474,11 +587,11 @@ export default function Home() {
             <h1 className={styles.title}>
               <span className={styles.greeting}>Hi, my name is</span>
               <span className={styles.name}>Harsha Vippala</span>
-              <span className={styles.role}>I build things for the web</span>
-          </h1>
+              <span className={styles.role}>I build high-scale, resilient backend systems</span>
+            </h1>
             <p className={styles.description}>
-              I'm a software engineer specializing in building exceptional digital experiences. 
-              Currently working at Liberty Mutual Insurance, focused on web development and cloud technologies.
+              I'm a seasoned software engineer specializing in building exceptional digital experiences. 
+              Currently working at 7-Eleven, enabling customers with a seamless, cashier-less shopping experience that's making convenience even more convenient.
             </p>
           </motion.div>
         </motion.section>
@@ -608,14 +721,14 @@ export default function Home() {
                 transition={{ duration: 0.6, delay: index * 0.2 }}
               >
                 <div className={styles.projectInfo}>
-                  <h3>{project.title}</h3>
-                  <p>{project.description}</p>
+                  <h3 className={styles.projectTitle}>{project.title}</h3>
+                  <p className={styles.projectDescription}>{project.description}</p>
                   <div className={styles.techStack}>
                     {project.tech.map((tech, i) => (
                       <span key={i} className={styles.tech}>{tech}</span>
                     ))}
                   </div>
-      </div>
+                </div>
               </motion.div>
             ))}
           </motion.div>
