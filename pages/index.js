@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Analytics } from "@vercel/analytics/react";
-import { motion, useViewportScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import styles from "/styles/Home.module.css";
 import Head from "next/head";
 import * as THREE from 'three';
@@ -18,14 +18,16 @@ const experiences = [
     company: '7-Eleven',
     period: 'March 2024 - Present',
     location: 'Irving, TX',
-    logo: '/7-eleven-logo-1.svg',
+    logo: '/7-eleven-simple.svg',
+    projectLink: 'https://smart.link/0cqpga62gqmqk?site_id=2020-09-07&creative_id=7R-paid-lp&cp_1=home',
+    projectTooltip: 'View 7-Eleven Mobile App Platform',
     points: [
-      'Spearheaded backend development for 7-Eleven\'s self-checkout mobile application by architecting and managing serverless microservices using AWS Lambda, MongoDB, and AWS services; processing approximately $0.5M in orders monthly across 60 active stores in the US and Canada',
-      'Led the complete modernization of legacy systems by upgrading Node.js and Mongoose versions and refactoring critical services, resulting in significant latency reduction and improved system stability',
-      'Engineered IoT integrations at in-store confirmation stations by implementing a QR code validation system and synchronized audio feedback for a seamless customer experience',
-      'Designed and implemented an end-to-end EBT payment processing solution, including onboarding a new payment processor and refining the tax engine for non-taxable items',
-      'Optimized backend performance through strategic refactoring and enhancements to MongoDB queries, increasing test coverage and operational efficiency',
-      'Independently managed the entire backend lifecycle for the self-checkout channel, ensuring 24/7 system availability and real-time integration between customer-facing and store applications'
+      'Spearheaded backend development for 7-Eleven\'s self-checkout mobile application by architecting and managing serverless microservices using AWS Lambda, MongoDB, and AWS services; processing ~$0.5M in orders across 60 active stores',
+      'Led the complete modernization of legacy systems by upgrading Node.js and Mongoose versions and refactoring critical services, resulting in significant latency reduction',
+      'Engineered IoT integrations at in-store confirmation stations implementing QR code validation system and synchronized audio feedback',
+      'Designed and implemented an end-to-end EBT payment processing solution, including onboarding a new payment processor',
+      'Optimized backend performance through strategic refactoring and enhancements to MongoDB queries',
+      'Independently managed the entire backend lifecycle, ensuring 24/7 system availability and real-time integration'
     ],
     tech: ['Node.js', 'TypeScript', 'AWS Lambda', 'MongoDB', 'Serverless', 'IoT', 'Microservices']
   },
@@ -44,7 +46,9 @@ const experiences = [
     company: 'Liberty Mutual Insurance',
     period: 'February 2023 - February 2024',
     location: 'Irving, TX',
-    logo: '/liberty-mutual.svg',
+    logo: '/liberty-mutual-simple.svg',
+    projectLink: 'https://www.getcertainly.com/',
+    projectTooltip: 'View Certainly Insurance Platform',
     points: [
       'Engineered and optimized Node.js-based RESTful APIs enabling seamless integration with key insurance vendors such as Zebra and Insurify',
       'Designed and implemented a reporting API using AWS Redshift data warehouse for on-demand sales reports, streamlining manual workflows',
@@ -60,7 +64,9 @@ const experiences = [
     company: 'American Express',
     period: 'April 2018 - May 2019',
     location: 'Hyderabad, India',
-    logo: '/american-express-1.svg',
+    logo: '/american-express-simple.svg',
+    projectLink: 'https://www.americanexpress.com/en-us/benefits/rewards/membership-rewards/?inav=us_menu_rewards_benefits_rewards_membership_rewards',
+    projectTooltip: 'View Amex Membership Rewards Platform',
     points: [
       'Collaborated on Amex\'s representative-facing interface, leveraging the custom Amex React library',
       'Integrated frontend seamlessly with backend using Spring, resulting in a simplified user experience for representatives',
@@ -76,26 +82,34 @@ const experiences = [
 
 const projects = [
   {
-    title: 'Insurance Portal',
-    description: 'A web portal for managing insurance policies. Includes document handling and basic analytics.',
-    tech: ['Spring Boot', 'React', 'AWS', 'GraphQL'],
-    image: '/insurance.jpg',
-    github: '',
-    live: ''
+    title: "Food Delivery App",
+    description: "Developed a comprehensive food delivery platform using Django and MySQL. The system features customer management, order processing, payment handling, and delivery tracking. Implemented a relational database with multiple entity relationships to manage restaurants, menu items, customer orders, and delivery personnel.",
+    image: "/project-food-delivery.png",
+    tech: ["Django", "Python", "MySQL", "Database Design", "RESTful API"],
+    github: "https://github.com/HarshaVippala/adbProject",
+    demo: null
   },
   {
-    title: 'Transaction Monitor',
-    description: 'A monitoring tool for payment transactions. Shows transaction status and basic analytics.',
-    tech: ['Python', 'AWS Redshift', 'Node.js', 'D3.js'],
-    image: '/analytics.jpg',
-    github: '',
-    live: ''
+    title: "Neural Network Security",
+    description: "Developed a neural network security tool to detect and mitigate backdoor attacks in deep learning models. Implemented the Neural Cleanse approach to reverse-engineer potential triggers and patch affected networks without compromising performance on clean inputs.",
+    image: "/project-backdoor.png",
+    tech: ["Python", "TensorFlow", "Deep Learning", "Security", "Computer Vision"],
+    github: "https://github.com/HarshaVippala/BACKDOOR-DETECTOR-FOR-BADNETS-USING-NEURAL-CLEANSE",
+    demo: null
+  },
+  {
+    title: "Noise Cancellation",
+    description: "Implemented a noise reduction system using Least Mean Square (LMS) adaptive filtering techniques to filter out additive noise from audio signals. Combined speech samples with real noise at specific signal-to-noise ratios and developed MATLAB algorithms to effectively remove noise patterns.",
+    image: "/project-anc.png",
+    tech: ["MATLAB", "Signal Processing", "Adaptive Filtering", "DSP"],
+    github: "https://github.com/HarshaVippala/Adaptive-Noise-Cancellation-using-LMS",
+    demo: null
   }
 ];
 
 export default function Home() {
   const containerRef = useRef(null);
-  const { scrollYProgress } = useViewportScroll();
+  const { scrollYProgress } = useScroll();
   const backgroundY = useTransform(scrollYProgress, [0, 1], ['0%', '100%']);
   const rendererRef = useRef(null);
   const sceneRef = useRef(null);
@@ -104,6 +118,7 @@ export default function Home() {
   const [navStyle, setNavStyle] = useState('top');
   const [activeSection, setActiveSection] = useState('about');
   const [isNavVisible, setIsNavVisible] = useState(true);
+  const [expandedExperiences, setExpandedExperiences] = useState({});
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -312,83 +327,89 @@ export default function Home() {
 
       camera.position.z = 1000;
 
-      // Throttled scroll handler
-      let ticking = false;
+      // Optimized animation loop with frame rate limiting
+      const clock = new THREE.Clock();
+      let lastTime = 0;
+      const fps = 30; // Limiting to 30 FPS instead of 60 for better performance
+      const fpsInterval = 1000 / fps;
+
+      function animate() {
+        if (!sceneRef.current || !cameraRef.current || !rendererRef.current) {
+          frameRef.current = requestAnimationFrame(animate);
+          return;
+        }
+
+        const now = clock.getElapsedTime() * 1000;
+        const elapsed = now - lastTime;
+
+        // Only render if enough time has passed (frame limiting)
+        if (elapsed > fpsInterval) {
+          lastTime = now - (elapsed % fpsInterval);
+          
+          // Reduced rotation speeds for smoother animation
+          sceneRef.current.rotation.x += 0.0001;
+          sceneRef.current.rotation.y += 0.00005;
+          
+          // Render only when visible in viewport
+          const rect = rendererRef.current.domElement.getBoundingClientRect();
+          if (
+            rect.bottom >= 0 &&
+            rect.top <= window.innerHeight
+          ) {
+            rendererRef.current.render(sceneRef.current, cameraRef.current);
+          }
+        }
+        
+        frameRef.current = requestAnimationFrame(animate);
+      }
+      
+      animate();
+
+      // Improved scroll handler with debouncing
+      let scrollTimeout;
       const handleScroll = () => {
-        if (!ticking) {
-          requestAnimationFrame(() => {
+        if (!scrollTimeout) {
+          scrollTimeout = setTimeout(() => {
             const scrollY = window.scrollY;
-            camera.position.y = -(scrollY * 0.2); // Reduced scroll effect multiplier
-            ticking = false;
-          });
-          ticking = true;
+            if (cameraRef.current) {
+              // Reduced parallax effect for better performance
+              cameraRef.current.position.y = -(scrollY * 0.1);
+            }
+            scrollTimeout = null;
+          }, 10); // Small timeout for smoother scrolling
         }
       };
 
       window.addEventListener('scroll', handleScroll, { passive: true });
 
-      // Optimized animation loop
-      const clock = new THREE.Clock();
-      let lastTime = 0;
-      const interval = 1000 / 60; // 60 FPS target
-
-      function animate() {
-        if (sceneRef.current && cameraRef.current && rendererRef.current) {
-          // Ensure the camera is properly positioned
-          cameraRef.current.position.z = 1000;
-          
-          // Rotate the scene slightly for a subtle movement effect
-          sceneRef.current.rotation.x += 0.0003;
-          sceneRef.current.rotation.y += 0.0001;
-          
-          // Render the scene
-          rendererRef.current.render(sceneRef.current, cameraRef.current);
-          
-          // Request next animation frame
-          frameRef.current = requestAnimationFrame(animate);
-        }
-      }
-      
-      animate();
-
-      // Optimized resize handler
+      // Optimized resize handler with proper cleanup
       let resizeTimeout;
       function handleResize() {
         clearTimeout(resizeTimeout);
         resizeTimeout = setTimeout(() => {
-          cameraRef.current.aspect = window.innerWidth / window.innerHeight;
-          cameraRef.current.updateProjectionMatrix();
-          rendererRef.current.setSize(window.innerWidth, window.innerHeight);
-          renderer.domElement.style.height = '100vh';
+          if (cameraRef.current && rendererRef.current) {
+            cameraRef.current.aspect = window.innerWidth / window.innerHeight;
+            cameraRef.current.updateProjectionMatrix();
+            rendererRef.current.setSize(window.innerWidth, window.innerHeight, false); // Added false for better performance
+          }
         }, 100);
       }
 
       window.addEventListener('resize', handleResize);
 
-      // Add scroll and resize event listeners
-      window.addEventListener('scroll', updateRendererSize);
-      window.addEventListener('resize', () => {
-        updateRendererSize();
-        
-        if (cameraRef.current) {
-          cameraRef.current.aspect = window.innerWidth / window.innerHeight;
-          cameraRef.current.updateProjectionMatrix();
-        }
-        
-        if (rendererRef.current) {
-          rendererRef.current.setSize(window.innerWidth, window.innerHeight);
-        }
-      });
-
-      // Clean up
+      // Clean up event listeners and animation frame
       return () => {
         window.removeEventListener('scroll', handleScroll);
         window.removeEventListener('resize', handleResize);
-        cancelAnimationFrame(frameRef.current);
-        scene.clear();
-        if (rendererRef.current && rendererRef.current.domElement) {
-          renderer.dispose();
-          document.body.removeChild(renderer.domElement);
+        window.removeEventListener('scroll', updateRendererSize);
+        window.removeEventListener('resize', updateRendererSize);
+        
+        if (frameRef.current) {
+          cancelAnimationFrame(frameRef.current);
+        }
+        
+        if (rendererRef.current) {
+          rendererRef.current.dispose();
         }
       };
     }
@@ -396,60 +417,115 @@ export default function Home() {
 
   useEffect(() => {
     const handleScroll = () => {
-      // Debounce the scroll event handling to improve performance
-      if (!handleScroll.timeout) {
-        handleScroll.timeout = setTimeout(() => {
+      const scrollPosition = window.scrollY;
+      const windowHeight = window.innerHeight;
+      
           // Change nav style based on scroll position
-          if (window.scrollY > 100 && navStyle === 'top') {
+      if (scrollPosition > 100 && navStyle === 'top') {
             setIsNavVisible(false);
             setTimeout(() => {
               setNavStyle('right');
               setIsNavVisible(true);
-            }, 150); // Reduced wait time for quicker transition
-          } else if (window.scrollY <= 100 && navStyle === 'right') {
+        }, 150);
+      } else if (scrollPosition <= 100 && navStyle === 'right') {
             setIsNavVisible(false);
             setTimeout(() => {
               setNavStyle('top');
               setIsNavVisible(true);
-            }, 150); // Reduced wait time for quicker transition
+        }, 150);
           }
           
-          // Determine active section based on scroll position
+      // Determine active section with improved detection for experience section
           const sections = ['about', 'experience', 'projects'];
           
+      // Special handling for experience section which may need different detection criteria
+      const experienceSection = document.getElementById('experience');
+      if (experienceSection) {
+        const experienceRect = experienceSection.getBoundingClientRect();
+        const experienceTop = experienceRect.top;
+        const experienceBottom = experienceRect.bottom;
+        
+        // Make experience section active when it's within a larger portion of the viewport
+        // This helps when the section has more complex content
+        if (
+          (experienceTop <= windowHeight * 0.4 && experienceBottom >= windowHeight * 0.1) ||
+          (experienceTop >= 0 && experienceTop <= windowHeight * 0.3)
+        ) {
+          setActiveSection('experience');
+          return; // Exit early if experience is active
+        }
+      }
+      
+      // Check other sections
           for (const section of sections) {
+        if (section === 'experience') continue; // Skip as we handled it separately
+        
             const element = document.getElementById(section);
             if (element) {
               const rect = element.getBoundingClientRect();
-              // Add a buffer to improve UX when detecting the active section
-              const buffer = 200;
-              
-              if (rect.top <= buffer && rect.bottom >= 0) {
+          const elementTop = rect.top;
+          const elementBottom = rect.bottom;
+          
+          // Consider a section active when it's in the middle third of the viewport
+          const viewportMiddleStart = windowHeight * 0.3;
+          const viewportMiddleEnd = windowHeight * 0.7;
+          
+          if (
+            (elementTop <= viewportMiddleStart && elementBottom >= viewportMiddleStart) ||
+            (elementTop <= viewportMiddleEnd && elementBottom >= viewportMiddleEnd) ||
+            (elementTop >= viewportMiddleStart && elementBottom <= viewportMiddleEnd)
+          ) {
                 setActiveSection(section);
                 break;
               }
             }
-          }
-          
-          handleScroll.timeout = null;
-        }, 5); // Even shorter timeout for more responsive scrolling
       }
     };
     
     window.addEventListener('scroll', handleScroll);
+    // Initial check for active section
+    handleScroll();
+    
     return () => {
       window.removeEventListener('scroll', handleScroll);
-      clearTimeout(handleScroll.timeout);
     };
   }, [navStyle]);
 
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-      setActiveSection(sectionId);
+      // Get the actual position of the element relative to the page
+      const rect = element.getBoundingClientRect();
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      
+      // Adjust offsets to minimize space above headers
+      // Smaller offset values to position headers closer to the top
+      const offset = -20; // Universal small offset to minimize space
+      const absoluteElementTop = rect.top + scrollTop;
+      const scrollToPosition = absoluteElementTop + offset;
+      
+      window.scrollTo({
+        top: scrollToPosition,
+        behavior: 'smooth'
+      });
+      
+      // Set active section after a short delay to allow for scroll completion
+      setTimeout(() => {
+        setActiveSection(sectionId);
+      }, 100);
     }
   };
+
+  useEffect(() => {
+    // First check on load if we need to scroll to a hash
+    const hash = window.location.hash;
+    if (hash) {
+      const sectionId = hash.replace('#', '');
+      setTimeout(() => {
+        scrollToSection(sectionId);
+      }, 500); // Wait for page to fully load
+    }
+  }, []);
 
   return (
     <div className={styles.container} ref={containerRef}>
@@ -457,7 +533,7 @@ export default function Home() {
           <title>Harsha Vippala | Senior Software Engineer</title>
           <meta charSet="utf-8" />
           <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
-          <meta name="description" content="Harsha Vippala - Senior Software Engineer specializing in web development, cloud technologies, and building exceptional digital experiences. Expertise in React, Node.js, AWS, and TypeScript." />
+          <meta name="description" content="Harsha Vippala - Software Engineer specializing in web development, cloud technologies, and building exceptional digital experiences. Expertise in React, Node.js, AWS, and TypeScript." />
           
           {/* SEO Meta Tags */}
           <meta name="author" content="Harsha Vippala" />
@@ -467,16 +543,16 @@ export default function Home() {
 
           {/* Open Graph / Social Media Meta Tags */}
           <meta property="og:type" content="website" />
-          <meta property="og:title" content="Harsha Vippala | Senior Software Engineer" />
-          <meta property="og:description" content="Senior Software Engineer specializing in web development and cloud technologies. Building exceptional digital experiences." />
+          <meta property="og:title" content="Harsha Vippala | Software Engineer" />
+          <meta property="og:description" content="Software Engineer specializing in web development and cloud technologies. Building exceptional digital experiences." />
           <meta property="og:url" content="https://harshavippala.com" />
           <meta property="og:site_name" content="Harsha Vippala Portfolio" />
           <meta property="og:image" content="/og-image.jpg" />
 
           {/* Twitter Card Meta Tags */}
           <meta name="twitter:card" content="summary_large_image" />
-          <meta name="twitter:title" content="Harsha Vippala | Senior Software Engineer" />
-          <meta name="twitter:description" content="Senior Software Engineer specializing in web development and cloud technologies." />
+          <meta name="twitter:title" content="Harsha Vippala | Software Engineer" />
+          <meta name="twitter:description" content="Software Engineer specializing in web development and cloud technologies." />
           <meta name="twitter:image" content="/og-image.jpg" />
 
           {/* Security Headers */}
@@ -502,7 +578,7 @@ export default function Home() {
                 "@context": "https://schema.org",
                 "@type": "Person",
                 "name": "Harsha Vippala",
-                "jobTitle": "Senior Software Engineer",
+                "jobTitle": "Software Engineer",
                 "url": "https://harshavippala.com",
                 "sameAs": [
                   "https://github.com/harshavippala",
@@ -585,12 +661,12 @@ export default function Home() {
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             <h1 className={styles.title}>
-              <span className={styles.greeting}>Hi, my name is</span>
+              <span className={styles.greeting}>Hi, I'm</span>
               <span className={styles.name}>Harsha Vippala</span>
-              <span className={styles.role}>I build high-scale, resilient backend systems</span>
+              <span className={styles.role}>Building high-scale, resilient backend systems</span>
             </h1>
             <p className={styles.description}>
-              I'm a seasoned software engineer specializing in building exceptional digital experiences. 
+              I'm a software engineer specializing in building exceptional digital experiences. 
               Currently working at 7-Eleven, enabling customers with a seamless, cashier-less shopping experience that's making convenience even more convenient.
             </p>
           </motion.div>
@@ -620,48 +696,82 @@ export default function Home() {
           ))}
         </motion.div>
 
-        <section id="experience" className={styles.experience}>
-          <motion.h2 
-            className={styles.sectionTitle}
+        <section id="experience" className={styles.section}>
+          <h2 className={styles.sectionTitle}>
+            Experience
+          </h2>
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >Experience</motion.h2>
-          
-          <motion.div 
-            className={styles.timeline}
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className={styles.experienceContainer}
           >
-            {experiences.map((exp, index) => (
-              <motion.div 
-                key={exp.company + exp.period} 
-                className={styles.timelineContent}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.2 }}
-              >
-                <div className={styles.experienceHeader}>
-                  <div className={styles.roleInfo}>
-                    <h3 className={styles.roleTitle}>{exp.title}</h3>
-                    <div className={styles.companyName}>
-                      @ {exp.company}
-                      <div className={styles.companyLogo}>
-                        <img src={exp.logo} alt={exp.company} />
+            <div className={styles.timelineWrapper}>
+              {experiences.map((exp, index) => {
+                const isExpanded = expandedExperiences[index] || false;
+                
+                const toggleExpand = () => {
+                  setExpandedExperiences(prev => ({
+                    ...prev,
+                    [index]: !prev[index]
+                  }));
+                };
+                
+                return (
+                  <div className={styles.timelineItem} key={index}>
+                    <div 
+                      className={`${styles.timelineHeader} ${isExpanded ? styles.expanded : ''}`}
+                      onClick={toggleExpand}
+                    >
+                      <div className={styles.timelineYear}>{exp.period.split(" - ")[0].split(" ")[1]}</div>
+                      <div className={styles.timelineDot}>
+                        <div className={styles.dot}></div>
+                        {index !== experiences.length - 1 && <div className={styles.line}></div>}
+                      </div>
+                      <div className={styles.timelineCardLogo}>
+                        <img src={exp.logo} alt={`${exp.company} logo`} />
+                      </div>
+                      <div className={styles.timelineSummary}>
+                        <h3 className={styles.timelineRole}>{exp.title}</h3>
+                        <div className={styles.timelineCompany}>{exp.company}</div>
+                      </div>
+                      <div className={styles.expandIcon}>
+                        {isExpanded ? (
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                            <polyline points="18 15 12 9 6 15"></polyline>
+                          </svg>
+                        ) : (
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                          </svg>
+                        )}
                       </div>
                     </div>
+                    
+                    {isExpanded && (
+                      <div className={styles.timelineContent}>
+                        <div className={styles.timelineDetails}>
+                          <div className={styles.companyHeader}>
+                            <div className={styles.roleInfo}>
+                              <h3 className={styles.roleTitle}>{exp.title}</h3>
+                              <div className={styles.company}>{exp.company}</div>
                     <div className={styles.period}>{exp.period}</div>
                     <div className={styles.location}>
-                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                        <circle cx="12" cy="10" r="3"></circle>
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></path>
+                                  <circle cx="12" cy="10" r="3" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></circle>
                       </svg>
                       {exp.location}
         </div>
+        </div>
+                            <div className={styles.companyLogo}>
+                              {exp.projectLink ? (
+                                <a href={exp.projectLink} target="_blank" rel="noopener noreferrer" title={exp.projectTooltip || "View Project"}>
+                                  <img src={exp.logo} alt={`${exp.company} logo`} />
+                                </a>
+                              ) : (
+                                <img src={exp.logo} alt={`${exp.company} logo`} />
+                              )}
         </div>
       </div>
 
@@ -675,23 +785,26 @@ export default function Home() {
                   <div className={styles.previousRole}>
                     <div className={styles.roleTransition}>
                       <span className={styles.previousRoleTitle}>{exp.previousRole.title}</span>
-                      <div className={styles.previousRolePeriod}>{exp.previousRole.period}</div>
+                                <span className={styles.arrow}>→</span>
+                                <span className={styles.previousRolePeriod}>{exp.previousRole.period}</span>
                     </div>
-                    <ul className={styles.points}>
-                      {exp.previousRole.points.map((point, i) => (
-                        <li key={i}>{point}</li>
-                      ))}
-                    </ul>
                   </div>
                 )}
 
+                          {exp.tech && (
                 <div className={styles.techStack}>
                   {exp.tech.map((tech, i) => (
                     <span key={i} className={styles.tech}>{tech}</span>
                   ))}
                 </div>
-              </motion.div>
-            ))}
+                          )}
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
           </motion.div>
         </section>
 
@@ -720,14 +833,33 @@ export default function Home() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.2 }}
               >
-                <div className={styles.projectInfo}>
+                <div className={styles.projectHeader}>
                   <h3 className={styles.projectTitle}>{project.title}</h3>
+                  {project.github && (
+                    <a href={project.github} className={styles.githubLink} target="_blank" rel="noopener noreferrer" title="View on GitHub">
+                      <img src="/github.svg" alt="GitHub" />
+                    </a>
+                  )}
+                </div>
+                
+                <div className={styles.projectInfo}>
                   <p className={styles.projectDescription}>{project.description}</p>
-                  <div className={styles.techStack}>
+                  <div className={styles.projectTech}>
                     {project.tech.map((tech, i) => (
-                      <span key={i} className={styles.tech}>{tech}</span>
+                      <span key={i} className={styles.techTag}>{tech}</span>
                     ))}
                   </div>
+                </div>
+                <div className={styles.projectLinks}>
+                  {project.demo && (
+                    <a href={project.demo} target="_blank" rel="noopener noreferrer" title="Live Demo">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                        <path d="M15 3h6v6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                        <path d="M10 14L21 3" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                    </a>
+                  )}
                 </div>
               </motion.div>
             ))}

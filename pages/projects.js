@@ -1,7 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import Head from 'next/head';
-import styles from '../styles/projects.module.css';
+import styles from '../styles/Home.module.css';
+import projectStyles from '../styles/projects.module.css';
 
 const projects = [
   {
@@ -38,56 +39,55 @@ export default function Projects() {
         <meta name="description" content="Featured projects by Harsha Vippala" />
       </Head>
 
-      <motion.div 
-        className={styles.content}
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-      >
-        <h1 className={styles.title}>Some Things I've Built</h1>
-        
-        <motion.div 
-          className={styles.projectsGrid}
-          variants={container}
-          initial="hidden"
-          animate="show"
-        >
-          {projects.map((project, index) => (
-            <motion.div 
-              key={project.title}
-              className={styles.projectCard}
-              variants={item}
-              whileHover={{ y: -10 }}
-            >
-              <div className={styles.projectImage}>
-                <img src={project.image} alt={project.title} />
-                <div className={styles.projectLinks}>
-                  {project.github && (
-                    <a href={project.github} target="_blank" rel="noopener noreferrer">
-                      <img src="/github.svg" alt="GitHub" />
-                    </a>
-                  )}
-                  {project.live && (
-                    <a href={project.live} target="_blank" rel="noopener noreferrer">
-                      <img src="/external-link.svg" alt="Live Site" />
-                    </a>
-                  )}
+      <main className={styles.main}>
+        <div className={styles.projects}>
+          <h2 className={styles.sectionTitle}>
+            <span className={styles.sectionNumber}>03.</span>Projects
+          </h2>
+          
+          <motion.div 
+            className={projectStyles.projectsGrid}
+            variants={container}
+            initial="hidden"
+            animate="show"
+          >
+            {projects.map((project, index) => (
+              <motion.div 
+                key={project.title}
+                className={projectStyles.projectCard}
+                variants={item}
+                whileHover={{ y: -10 }}
+              >
+                <div className={projectStyles.projectImage}>
+                  <img src={project.image} alt={project.title} />
+                  <div className={projectStyles.projectLinks}>
+                    {project.github && (
+                      <a href={project.github} target="_blank" rel="noopener noreferrer">
+                        <img src="/github.svg" alt="GitHub" />
+                      </a>
+                    )}
+                    {project.live && (
+                      <a href={project.live} target="_blank" rel="noopener noreferrer">
+                        <img src="/external-link.svg" alt="Live Site" />
+                      </a>
+                    )}
+                  </div>
+                </div>
+                
+                <div className={projectStyles.projectInfo}>
+                  <h3 className={projectStyles.projectTitle}>{project.title}</h3>
+                  <p className={projectStyles.projectDescription}>{project.description}</p>
+                  <ul className={projectStyles.techList}>
+                    {project.tech.map((tech, index) => (
+                      <li key={index}>{tech}</li>
+                    ))}
+                  </ul>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
         </div>
-      </div>
-              
-              <div className={styles.projectInfo}>
-                <h3 className={styles.projectTitle}>{project.title}</h3>
-                <p className={styles.projectDescription}>{project.description}</p>
-                <ul className={styles.techList}>
-                  {project.tech.map((tech, index) => (
-                    <li key={index}>{tech}</li>
-                  ))}
-                </ul>
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
-      </motion.div>
+      </main>
     </div>
   );
 }
