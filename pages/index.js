@@ -12,98 +12,89 @@ const skills = {
   tools: ['Docker', 'Git', 'Jenkins', 'Jira', 'Terraform', 'Kubernetes', 'Cypress.io', 'Jest', 'JUnit', 'Datadog', 'Splunk', 'Grafana', 'Kibana', 'Ansible', 'Bamboo']
 };
 
-const experiences = [
-  {
-    title: 'Software Engineer II',
-    company: '7-Eleven',
-    period: 'March 2024 - Present',
-    location: 'Irving, TX',
-    logo: '/7-eleven-simple.svg',
-    projectLink: 'https://smart.link/0cqpga62gqmqk?site_id=2020-09-07&creative_id=7R-paid-lp&cp_1=home',
-    projectTooltip: 'View 7-Eleven Mobile App Platform',
-    points: [
-      'Spearheaded backend development for 7-Eleven\'s self-checkout mobile application by architecting and managing serverless microservices using AWS Lambda, MongoDB, and AWS services; processing ~$0.5M in orders across 60 active stores',
-      'Led the complete modernization of legacy systems by upgrading Node.js and Mongoose versions and refactoring critical services, resulting in significant latency reduction',
-      'Engineered IoT integrations at in-store confirmation stations implementing QR code validation system and synchronized audio feedback',
-      'Designed and implemented an end-to-end EBT payment processing solution, including onboarding a new payment processor',
-      'Optimized backend performance through strategic refactoring and enhancements to MongoDB queries',
-      'Independently managed the entire backend lifecycle, ensuring 24/7 system availability and real-time integration'
-    ],
-    tech: ['Node.js', 'TypeScript', 'AWS Lambda', 'MongoDB', 'Serverless', 'IoT', 'Microservices']
-  },
-  {
-    title: 'Senior Software Engineer',
-    previousRole: {
-      title: 'Software Engineer',
-      period: 'September 2021 - February 2023',
-      points: [
-        'Worked in the quoting domain, responsible for providing quotes for different insurance products, handling an average of 87,000 monthly visits',
-        'Implemented a user data tracking feature, capturing interactions of users in the quote flow, empowering the business team to identify customer behavior',
-        'Increased conversion rates by 7% through data-driven decisions about product development and targeted marketing campaigns',
-        'Maintained a dynamic client UI through regular updates of mock designs and components, ensuring robust end-to-end testing'
-      ]
-    },
-    company: 'Liberty Mutual Insurance',
-    period: 'February 2023 - February 2024',
-    location: 'Irving, TX',
-    logo: '/liberty-mutual-simple.svg',
-    projectLink: 'https://www.getcertainly.com/',
-    projectTooltip: 'View Certainly Insurance Platform',
-    points: [
-      'Engineered and optimized Node.js-based RESTful APIs enabling seamless integration with key insurance vendors such as Zebra and Insurify',
-      'Designed and implemented a reporting API using AWS Redshift data warehouse for on-demand sales reports, streamlining manual workflows',
-      'Utilized GraphQL and gRPC to architect robust APIs, ensuring efficient third-party system integration',
-      'Managed and monitored production systems to ensure availability and performance, proactively resolving issues',
-      'Led a team of interns in implementing a product availability manager service using AWS Lambda',
-      'Supervised the entire redesign of the user account page on the website'
-    ],
-    tech: ['Node.js', 'React', 'TypeScript', 'GraphQL', 'gRPC', 'AWS', 'Redshift', 'Lambda']
-  },
-  {
-    title: 'Software Engineer',
-    company: 'American Express',
-    period: 'April 2018 - May 2019',
-    location: 'Hyderabad, India',
-    logo: '/american-express-simple.svg',
-    projectLink: 'https://www.americanexpress.com/en-us/benefits/rewards/membership-rewards/?inav=us_menu_rewards_benefits_rewards_membership_rewards',
-    projectTooltip: 'View Amex Membership Rewards Platform',
-    points: [
-      'Collaborated on Amex\'s representative-facing interface, leveraging the custom Amex React library',
-      'Integrated frontend seamlessly with backend using Spring, resulting in a simplified user experience for representatives',
-      'Implemented state management with Redux, optimizing data handling and ensuring efficient performance',
-      'Orchestrated real-time data synchronization through WebSockets, enhancing customer service responsiveness',
-      'Designed and implemented RESTful APIs using Spring MVC and Spring Boot',
-      'Implemented unit testing using JUnit and integration testing using Spring Boot Test',
-      'Used Spring Data JPA to access and manage data in a MySQL database'
-    ],
-    tech: ['Spring Boot', 'React', 'Redux', 'WebSockets', 'MySQL', 'Java', 'JUnit', 'JPA']
-  }
-];
-
 const projects = [
   {
-    title: "Food Delivery App",
-    description: "Developed a comprehensive food delivery platform using Django and MySQL. The system features customer management, order processing, payment handling, and delivery tracking. Implemented a relational database with multiple entity relationships to manage restaurants, menu items, customer orders, and delivery personnel.",
+    title: "Food Delivery Platform",
+    description: "Engineered a scalable food delivery platform using Django and MySQL, featuring real-time order tracking, payment processing, and a comprehensive admin dashboard. Implemented a microservices architecture for order management, delivery routing, and restaurant integration, handling concurrent orders efficiently.",
     image: "/project-food-delivery.png",
-    tech: ["Django", "Python", "MySQL", "Database Design", "RESTful API"],
+    tech: ["Django", "Python", "MySQL", "Redis", "RESTful API"],
     github: "https://github.com/HarshaVippala/adbProject",
     demo: null
   },
   {
-    title: "Neural Network Security",
-    description: "Developed a neural network security tool to detect and mitigate backdoor attacks in deep learning models. Implemented the Neural Cleanse approach to reverse-engineer potential triggers and patch affected networks without compromising performance on clean inputs.",
-    image: "/project-backdoor.png",
-    tech: ["Python", "TensorFlow", "Deep Learning", "Security", "Computer Vision"],
-    github: "https://github.com/HarshaVippala/BACKDOOR-DETECTOR-FOR-BADNETS-USING-NEURAL-CLEANSE",
+    title: "Car Rental Management System",
+    description: "Designed and implemented a comprehensive database system and web application for a car rental company using Django and MySQL. Built a scalable backend with role-based access control, customer management, and real-time inventory tracking. Implemented RESTful APIs for CRUD operations and business intelligence reporting.",
+    image: "/project-car-rental.png",
+    tech: ["Django", "MySQL", "Python", "RESTful API", "Database Design"],
+    github: "https://github.com/HarshaVippala/Database_Design",
     demo: null
   },
   {
-    title: "Noise Cancellation",
-    description: "Implemented a noise reduction system using Least Mean Square (LMS) adaptive filtering techniques to filter out additive noise from audio signals. Combined speech samples with real noise at specific signal-to-noise ratios and developed MATLAB algorithms to effectively remove noise patterns.",
-    image: "/project-anc.png",
-    tech: ["MATLAB", "Signal Processing", "Adaptive Filtering", "DSP"],
-    github: "https://github.com/HarshaVippala/Adaptive-Noise-Cancellation-using-LMS",
+    title: "Restaurant Booking AI Assistant",
+    description: "Developed an intelligent conversational AI system using DeepPavlov framework and TensorFlow. Implemented natural language understanding, dialogue state tracking, and contextual response generation. The system handles complex restaurant booking scenarios with high accuracy in understanding user preferences.",
+    image: "/project-restaurant-ai.png",
+    tech: ["TensorFlow", "Python", "NLP", "DeepPavlov", "Conversational AI"],
+    github: "https://github.com/HarshaVippala/Goal-Oriented-Dialogue-Systems-Using-DeepPavLov",
     demo: null
+  }
+];
+
+// Remove the separate education array and combine with experiences
+const timelineItems = [
+  {
+    type: 'experience',
+    logo: '/7-eleven.png',
+    company: '7-Eleven',
+    role: 'Software Engineer II',
+    startYear: '2024',
+    period: 'February 2024 - Present',
+    location: 'Irving, TX',
+    summary: 'Leading development of serverless microservices for self-checkout mobile application, handling $500K+ monthly transactions across 60+ stores. Implementing IoT solutions and EBT payment systems.',
+    description: 'Working on modernizing the digital experience for millions of customers through innovative web and mobile solutions.'
+  },
+  {
+    type: 'experience',
+    logo: '/Liberty-Mutual-Logo.jpg',
+    company: 'Liberty Mutual Insurance',
+    role: 'Senior Software Engineer',
+    startYear: '2023',
+    period: 'February 2023 - February 2024',
+    location: 'Boston, MA',
+    summary: 'Developed NestJS APIs for third-party insurance vendor integrations, enabling real-time quote generation and automated sales workflows. Built GraphQL and gRPC-based services.',
+    description: 'Contributed to the development of enterprise-scale insurance platforms and digital transformation initiatives.'
+  },
+  {
+    type: 'experience',
+    logo: '/Liberty-Mutual-Logo.jpg',
+    company: 'Liberty Mutual Insurance',
+    role: 'Software Engineer',
+    startYear: '2021',
+    period: 'May 2021 - February 2023',
+    location: 'Boston, MA',
+    summary: 'Optimized backend quoting services handling 87,000+ monthly visits. Implemented user tracking features resulting in 7% conversion rate increase.',
+    description: 'Developed and optimized backend quoting services for the insurance platform.'
+  },
+  {
+    type: 'education',
+    logo: '/NYU.png',
+    institution: 'New York University',
+    degree: "Master's in Computer Engineering",
+    period: 'May 2021',
+    startYear: '2019',
+    location: 'New York, NY',
+    summary: 'Specialized in Artificial Intelligence and Machine Learning',
+    details: 'Specialized in Artificial Intelligence and Machine Learning'
+  },
+  {
+    type: 'education',
+    logo: '/klu.png',
+    institution: 'KL University',
+    degree: "Bachelor's in Computer Science",
+    period: 'May 2019',
+    startYear: '2015',
+    location: 'Vijayawada, India',
+    summary: 'Graduated with First Class Honors',
+    details: 'Graduated with First Class Honors'
   }
 ];
 
@@ -116,9 +107,9 @@ export default function Home() {
   const cameraRef = useRef(null);
   const frameRef = useRef(null);
   const [navStyle, setNavStyle] = useState('top');
-  const [activeSection, setActiveSection] = useState('about');
+  const [activeSection, setActiveSection] = useState('readme');
   const [isNavVisible, setIsNavVisible] = useState(true);
-  const [expandedExperiences, setExpandedExperiences] = useState({});
+  const [expandedItem, setExpandedItem] = useState(null);
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -436,7 +427,7 @@ export default function Home() {
           }
           
       // Determine active section with improved detection for experience section
-          const sections = ['about', 'experience', 'projects'];
+          const sections = ['readme', 'overview', 'changelog', 'examples'];
           
       // Special handling for experience section which may need different detection criteria
       const experienceSection = document.getElementById('experience');
@@ -526,6 +517,10 @@ export default function Home() {
       }, 500); // Wait for page to fully load
     }
   }, []);
+
+  const toggleExpand = (index) => {
+    setExpandedItem(index === expandedItem ? null : index);
+  };
 
   return (
     <div className={styles.container} ref={containerRef}>
@@ -626,28 +621,34 @@ export default function Home() {
             transition={{ duration: 0.15, ease: "easeOut" }}
           >
             <button 
-              onClick={() => scrollToSection('about')}
-              className={activeSection === 'about' ? styles.active : ''}
+              onClick={() => scrollToSection('readme')}
+              className={activeSection === 'readme' ? styles.active : ''}
             >
-              About
+              <span className={styles.docPrefix}>./</span>README.md
             </button>
             <button 
-              onClick={() => scrollToSection('experience')}
-              className={activeSection === 'experience' ? styles.active : ''}
+              onClick={() => scrollToSection('overview')}
+              className={activeSection === 'overview' ? styles.active : ''}
             >
-              Experience
+              <span className={styles.docPrefix}>./</span>OVERVIEW.md
             </button>
             <button 
-              onClick={() => scrollToSection('projects')}
-              className={activeSection === 'projects' ? styles.active : ''}
+              onClick={() => scrollToSection('changelog')}
+              className={activeSection === 'changelog' ? styles.active : ''}
             >
-              Projects
+              <span className={styles.docPrefix}>./</span>CHANGELOG.md
+            </button>
+            <button 
+              onClick={() => scrollToSection('examples')}
+              className={activeSection === 'examples' ? styles.active : ''}
+            >
+              <span className={styles.docPrefix}>./</span>EXAMPLES/
             </button>
           </motion.nav>
         )}
 
         <motion.section 
-          id="about" 
+          id="readme" 
           className={styles.hero}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -663,11 +664,11 @@ export default function Home() {
             <h1 className={styles.title}>
               <span className={styles.greeting}>Hi, I'm</span>
               <span className={styles.name}>Harsha Vippala</span>
-              <span className={styles.role}>Building high-scale, resilient backend systems</span>
+              <span className={styles.role}>Building scalable, cloud-native applications</span>
             </h1>
             <p className={styles.description}>
               I'm a software engineer specializing in building exceptional digital experiences. 
-              Currently working at 7-Eleven, enabling customers with a seamless, cashier-less shopping experience that's making convenience even more convenient.
+              Currently at 7-Eleven, working on self-checkout mobile applications and IoT integrations.
             </p>
           </motion.div>
         </motion.section>
@@ -696,176 +697,129 @@ export default function Home() {
           ))}
         </motion.div>
 
-        <section id="experience" className={styles.section}>
+        <section id="overview" className={styles.section}>
           <h2 className={styles.sectionTitle}>
-            Experience
+            <span className={styles.docPrefix}>./</span>OVERVIEW.md
           </h2>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className={styles.experienceContainer}
+            className={styles.aboutContainer}
           >
-            <div className={styles.timelineWrapper}>
-              {experiences.map((exp, index) => {
-                const isExpanded = expandedExperiences[index] || false;
-                
-                const toggleExpand = () => {
-                  setExpandedExperiences(prev => ({
-                    ...prev,
-                    [index]: !prev[index]
-                  }));
-                };
-                
-                return (
-                  <div className={styles.timelineItem} key={index}>
-                    <div 
-                      className={`${styles.timelineHeader} ${isExpanded ? styles.expanded : ''}`}
-                      onClick={toggleExpand}
-                    >
-                      <div className={styles.timelineYear}>{exp.period.split(" - ")[0].split(" ")[1]}</div>
-                      <div className={styles.timelineDot}>
-                        <div className={styles.dot}></div>
-                        {index !== experiences.length - 1 && <div className={styles.line}></div>}
-                      </div>
-                      <div className={styles.timelineCardLogo}>
-                        <img src={exp.logo} alt={`${exp.company} logo`} />
-                      </div>
-                      <div className={styles.timelineSummary}>
-                        <h3 className={styles.timelineRole}>{exp.title}</h3>
-                        <div className={styles.timelineCompany}>{exp.company}</div>
-                      </div>
-                      <div className={styles.expandIcon}>
-                        {isExpanded ? (
-                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                            <polyline points="18 15 12 9 6 15"></polyline>
-                          </svg>
-                        ) : (
-                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                            <polyline points="6 9 12 15 18 9"></polyline>
-                          </svg>
-                        )}
-                      </div>
-                    </div>
-                    
-                    {isExpanded && (
-                      <div className={styles.timelineContent}>
-                        <div className={styles.timelineDetails}>
-                          <div className={styles.companyHeader}>
-                            <div className={styles.roleInfo}>
-                              <h3 className={styles.roleTitle}>{exp.title}</h3>
-                              <div className={styles.company}>{exp.company}</div>
-                    <div className={styles.period}>{exp.period}</div>
-                    <div className={styles.location}>
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></path>
-                                  <circle cx="12" cy="10" r="3" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></circle>
-                      </svg>
-                      {exp.location}
-        </div>
-        </div>
-                            <div className={styles.companyLogo}>
-                              {exp.projectLink ? (
-                                <a href={exp.projectLink} target="_blank" rel="noopener noreferrer" title={exp.projectTooltip || "View Project"}>
-                                  <img src={exp.logo} alt={`${exp.company} logo`} />
-                                </a>
-                              ) : (
-                                <img src={exp.logo} alt={`${exp.company} logo`} />
-                              )}
-        </div>
-      </div>
-
-                <ul className={styles.points}>
-                  {exp.points.map((point, i) => (
-                    <li key={i}>{point}</li>
-                  ))}
-                </ul>
-
-                {exp.previousRole && (
-                  <div className={styles.previousRole}>
-                    <div className={styles.roleTransition}>
-                      <span className={styles.previousRoleTitle}>{exp.previousRole.title}</span>
-                                <span className={styles.arrow}>→</span>
-                                <span className={styles.previousRolePeriod}>{exp.previousRole.period}</span>
-                    </div>
-                  </div>
-                )}
-
-                          {exp.tech && (
-                <div className={styles.techStack}>
-                  {exp.tech.map((tech, i) => (
-                    <span key={i} className={styles.tech}>{tech}</span>
-                  ))}
-                </div>
-                          )}
-                        </div>
-                      </div>
-                    )}
-                  </div>
-                );
-              })}
+            <div className={styles.aboutContent}>
+              <div className={styles.aboutText}>
+                <p>
+                  Software Engineer with 5 years of experience designing and deploying scalable, cloud-native applications. Currently based in <span className={styles.highlight}>Irving, TX</span>, with expertise in Node.js, TypeScript, NestJS, and AWS with a strong background in microservices architecture, API development, and distributed systems.
+                </p>
+                <p>
+                  At 7-Eleven, I'm architecting and leading development of serverless microservices for self-checkout mobile applications, handling $500K+ in transactions per month across 60+ stores. My work includes implementing IoT integrations and EBT payment systems.
+                </p>
+                <p>
+                  Beyond coding, I'm passionate about system design, performance optimization, and mentoring fellow engineers. When I'm not coding, you'll find me watching Formula 1 races, following football matches, or unwinding with some PlayStation gaming. I also enjoy attending concerts and experiencing live music.
+                </p>
+              </div>
             </div>
           </motion.div>
         </section>
 
-        <section id="projects" className={styles.projects}>
-          <motion.h2 
-            className={styles.sectionTitle}
+        <section id="changelog" className={styles.section}>
+          <h2 className={styles.sectionTitle}>
+            <span className={styles.docPrefix}>./</span>CHANGELOG.md
+          </h2>
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >Projects</motion.h2>
-          
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className={styles.timelineContainer}
+          >
+            <div className={styles.timelineWrapper}>
+              <div className={styles.timelineLine}>
+                {timelineItems.map((item, index) => (
+                  <div key={`year-${index}`} className={`${styles.timelineYear} ${expandedItem === index ? styles.expanded : ''}`}>
+                    {item.startYear}
+                    <div className={styles.timelineDot}></div>
+                  </div>
+                ))}
+              </div>
+              <div className={styles.timelineCards}>
+                {timelineItems.map((item, index) => (
+                  <motion.div 
+                    key={index}
+                    className={`${styles.timelineItem} ${expandedItem === index ? styles.expanded : ''}`}
+                    layout
+                    transition={{ duration: 0.3 }}
+                    whileHover={{ x: 5 }}
+                  >
+                    <div 
+                      className={styles.timelineHeader}
+                      onClick={() => toggleExpand(index)}
+                    >
+                      <div className={styles.timelineCardLogo}>
+                        <img src={item.logo} alt={item.type === 'experience' ? `${item.company} logo` : `${item.institution} logo`} />
+                      </div>
+                      <div className={styles.timelineSummary}>
+                        <div className={styles.timelineCompany}>
+                          {item.type === 'experience' ? item.company : item.institution}
+                        </div>
+                        <div className={styles.timelineRole}>
+                          {item.type === 'experience' ? item.role : item.degree}
+                        </div>
+                      </div>
+                    </div>
+                    {expandedItem === index && (
+                      <motion.div 
+                        className={styles.timelineExpandedInfo}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 0.3 }}
+                      >
+                        <div className={styles.timelinePeriod}>{item.period}</div>
+                        <div className={styles.timelineLocation}>{item.location}</div>
+                        <p className={styles.timelineSummaryText}>{item.summary}</p>
+                      </motion.div>
+                    )}
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+        </section>
+
+        <section id="examples" className={styles.projects}>
+          <h2 className={styles.sectionTitle}>
+            <span className={styles.docPrefix}>./</span>EXAMPLES/
+          </h2>
           <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
             className={styles.projectsGrid}
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
           >
             {projects.map((project, index) => (
               <motion.div 
-                key={project.title} 
+                key={project.title}
                 className={styles.projectCard}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.2 }}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
               >
-                <div className={styles.projectHeader}>
-                  <h3 className={styles.projectTitle}>{project.title}</h3>
-                  {project.github && (
-                    <a href={project.github} className={styles.githubLink} target="_blank" rel="noopener noreferrer" title="View on GitHub">
-                      <img src="/github.svg" alt="GitHub" />
-                    </a>
-                  )}
-                </div>
-                
-                <div className={styles.projectInfo}>
-                  <p className={styles.projectDescription}>{project.description}</p>
-                  <div className={styles.projectTech}>
-                    {project.tech.map((tech, i) => (
-                      <span key={i} className={styles.techTag}>{tech}</span>
-                    ))}
-                  </div>
+                <h3 className={styles.projectTitle}>{project.title}</h3>
+                <p className={styles.projectDescription}>{project.description}</p>
+                <div className={styles.projectTech}>
+                  {project.tech.map((tech, techIndex) => (
+                    <span key={`${project.title}-tech-${techIndex}`} className={styles.techTag}>{tech}</span>
+                  ))}
                 </div>
                 <div className={styles.projectLinks}>
-                  {project.demo && (
-                    <a href={project.demo} target="_blank" rel="noopener noreferrer" title="Live Demo">
-                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                        <path d="M15 3h6v6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                        <path d="M10 14L21 3" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                      </svg>
-                    </a>
-                  )}
+                  <a href={project.github} target="_blank" rel="noopener noreferrer" className={styles.githubLink}>
+                    <img src="/github.svg" alt="GitHub" />
+                  </a>
                 </div>
               </motion.div>
             ))}
           </motion.div>
         </section>
-
       </main>
 
       <motion.footer 
