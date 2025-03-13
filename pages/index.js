@@ -5,12 +5,7 @@ import styles from "/styles/Home.module.css";
 import Head from "next/head";
 import * as THREE from 'three';
 
-const skills = {
-  languages: ['JavaScript', 'TypeScript', 'Python', 'Java', 'Groovy', 'Go', 'SQL'],
-  frameworks: ['React', 'Node.js', 'NestJS', 'Spring Boot', 'Next.js', 'Express.js', 'GraphQL', 'gRPC', 'Kafka', 'RabbitMQ'],
-  cloud: ['AWS Lambda', 'S3', 'EC2', 'RDS', 'CloudWatch', 'Redshift', 'DynamoDB', 'ECS', 'ELB', 'EKS', 'IAM', 'GCP'],
-  tools: ['Docker', 'Git', 'Jenkins', 'Jira', 'Terraform', 'Kubernetes', 'Cypress.io', 'Jest', 'JUnit', 'Datadog', 'Splunk', 'Grafana', 'Kibana', 'Ansible', 'Bamboo']
-};
+// ... [Previous code remains unchanged until the overview section]
 
 const projects = [
   {
