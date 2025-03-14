@@ -5,7 +5,47 @@ import styles from "/styles/Home.module.css";
 import Head from "next/head";
 import * as THREE from 'three';
 
-// ... [Previous code remains unchanged until the overview section]
+// Add ResumeButton component at the top level
+const ResumeButton = () => {
+  const handleDownload = () => {
+    // Use the correct resume file path
+    const resumeUrl = '/Resume.pdf';
+    
+    // Create a link element
+    const link = document.createElement('a');
+    link.href = resumeUrl;
+    link.download = 'Harsha_Vippala_Resume.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
+  return (
+    <button 
+      className={styles.resumeButton}
+      onClick={handleDownload}
+      aria-label="Download Resume"
+    >
+      <div className={styles.resumeIconWrapper}>
+        <svg 
+          xmlns="http://www.w3.org/2000/svg" 
+          viewBox="0 0 24 24" 
+          fill="none" 
+          stroke="currentColor" 
+          className={styles.resumeIcon}
+        >
+          <path 
+            strokeLinecap="round" 
+            strokeLinejoin="round" 
+            strokeWidth={2} 
+            d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" 
+          />
+        </svg>
+        <span className={styles.resumeLabel}>Resume</span>
+      </div>
+    </button>
+  );
+};
 
 const projects = [
   {
@@ -92,6 +132,179 @@ const timelineItems = [
     details: 'Graduated with First Class Honors'
   }
 ];
+
+const ContactSection = () => {
+  return (
+    <motion.div 
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+      className={styles.contactWrapper}
+    >
+      <div className={styles.contactIcons}>
+        <motion.a
+          href="mailto:harsha.vippala@gmail.com"
+          className={styles.contactIcon}
+          whileHover={{ y: -5, scale: 1.1 }}
+          whileTap={{ scale: 0.95 }}
+        >
+          <img src="/gmail.svg" alt="Email" />
+        </motion.a>
+        <motion.a
+          href="https://linkedin.com/in/harshavippala"
+          className={styles.contactIcon}
+          whileHover={{ y: -5, scale: 1.1 }}
+          whileTap={{ scale: 0.95 }}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img src="/linkedin.svg" alt="LinkedIn" />
+        </motion.a>
+        <motion.a
+          href="https://github.com/harshavippala"
+          className={styles.contactIcon}
+          whileHover={{ y: -5, scale: 1.1 }}
+          whileTap={{ scale: 0.95 }}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img src="/github.svg" alt="GitHub" />
+        </motion.a>
+      </div>
+
+      <motion.a
+        href="/Harsha_Vippala_Resume.pdf"
+        download
+        className={styles.resumeIconButton}
+        whileHover={{ y: -5, scale: 1.1 }}
+        whileTap={{ scale: 0.95 }}
+      >
+        <svg 
+          xmlns="http://www.w3.org/2000/svg" 
+          width="56" 
+          height="56" 
+          viewBox="0 0 24 24" 
+          fill="none" 
+          stroke="currentColor" 
+          strokeWidth="2" 
+          strokeLinecap="round" 
+          strokeLinejoin="round"
+        >
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+          <polyline points="14 2 14 8 20 8" />
+          <line x1="16" y1="13" x2="8" y2="13" />
+          <line x1="16" y1="17" x2="8" y2="17" />
+          <line x1="10" y1="9" x2="8" y2="9" />
+        </svg>
+      </motion.a>
+    </motion.div>
+  );
+};
+
+const TechStackSection = () => (
+  <motion.div 
+    className={styles.skillsContainer}
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.5 }}
+  >
+    <div className={styles.skillsGrid}>
+      <motion.div 
+        className={styles.skillCard}
+        whileHover={{ y: -5 }}
+        transition={{ duration: 0.2 }}
+      >
+        <h3>Languages & Frameworks</h3>
+        <div className={styles.skillTags}>
+          <span>Node.js</span>
+          <span>TypeScript</span>
+          <span>NestJS</span>
+          <span>Java</span>
+          <span>SpringBoot</span>
+          <span>Python</span>
+        </div>
+      </motion.div>
+
+      <motion.div 
+        className={styles.skillCard}
+        whileHover={{ y: -5 }}
+        transition={{ duration: 0.2 }}
+      >
+        <h3>Cloud Services</h3>
+        <div className={styles.skillTags}>
+          <span>AWS Lambda</span>
+          <span>EC2</span>
+          <span>S3</span>
+          <span>Docker</span>
+          <span>Kubernetes</span>
+          <span>IoT Core</span>
+        </div>
+      </motion.div>
+
+      <motion.div 
+        className={styles.skillCard}
+        whileHover={{ y: -5 }}
+        transition={{ duration: 0.2 }}
+      >
+        <h3>Backend & Services</h3>
+        <div className={styles.skillTags}>
+          <span>RESTful APIs</span>
+          <span>GraphQL</span>
+          <span>gRPC</span>
+          <span>Kafka</span>
+          <span>Microservices</span>
+          <span>Serverless</span>
+        </div>
+      </motion.div>
+
+      <motion.div 
+        className={styles.skillCard}
+        whileHover={{ y: -5 }}
+        transition={{ duration: 0.2 }}
+      >
+        <h3>Databases</h3>
+        <div className={styles.skillTags}>
+          <span>MongoDB</span>
+          <span>DynamoDB</span>
+          <span>PostgreSQL</span>
+          <span>AWS RDS</span>
+          <span>Redshift</span>
+        </div>
+      </motion.div>
+
+      <motion.div 
+        className={styles.skillCard}
+        whileHover={{ y: -5 }}
+        transition={{ duration: 0.2 }}
+      >
+        <h3>DevOps Tools</h3>
+        <div className={styles.skillTags}>
+          <span>New Relic</span>
+          <span>Datadog</span>
+          <span>CloudWatch</span>
+          <span>Grafana</span>
+          <span>Jenkins</span>
+          <span>GitLab CI/CD</span>
+          <span>Bitbucket</span>
+        </div>
+      </motion.div>
+
+      <motion.div 
+        className={styles.skillCard}
+        whileHover={{ y: -5 }}
+        transition={{ duration: 0.2 }}
+      >
+        <h3>Testing Tools</h3>
+        <div className={styles.skillTags}>
+          <span>Jest</span>
+          <span>JUnit</span>
+          <span>Cypress.io</span>
+          <span>Charles Proxy</span>
+        </div>
+      </motion.div>
+    </div>
+  </motion.div>
+);
 
 export default function Home() {
   const containerRef = useRef(null);
@@ -405,25 +618,66 @@ export default function Home() {
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
       const windowHeight = window.innerHeight;
+      const contactSection = document.getElementById('contact');
+      const resumeButton = document.querySelector(`.${styles.resumeButton}`);
       
-          // Change nav style based on scroll position
-      if (scrollPosition > 100 && navStyle === 'top') {
-            setIsNavVisible(false);
+      // Hide resume button when contact section is in view
+      if (contactSection && resumeButton) {
+        const rect = contactSection.getBoundingClientRect();
+        const isContactVisible = rect.top <= windowHeight * 0.7 && rect.bottom >= windowHeight * 0.3;
+        
+        if (isContactVisible) {
+          resumeButton.style.opacity = '0';
+          resumeButton.style.transform = 'translateY(20px)';
+          setTimeout(() => {
+            resumeButton.style.visibility = 'hidden';
+          }, 300);
+        } else {
+          resumeButton.style.visibility = 'visible';
+          resumeButton.style.opacity = '1';
+          resumeButton.style.transform = 'translateY(0)';
+        }
+      }
+      
+      // Hide social links when contact section is in view
+      if (contactSection) {
+        const rect = contactSection.getBoundingClientRect();
+        const isContactVisible = rect.top <= windowHeight * 0.7 && rect.bottom >= windowHeight * 0.3;
+        const socialLinks = document.querySelector(`.${styles.socialLinks}`);
+        
+        if (socialLinks) {
+          if (isContactVisible) {
+            socialLinks.style.opacity = '0';
+            socialLinks.style.transform = 'translateX(-20px)';
             setTimeout(() => {
-              setNavStyle('right');
-              setIsNavVisible(true);
+              socialLinks.style.visibility = 'hidden';
+            }, 300);
+          } else {
+            socialLinks.style.visibility = 'visible';
+            socialLinks.style.opacity = '1';
+            socialLinks.style.transform = 'translateX(0)';
+          }
+        }
+      }
+      
+      // Existing nav style logic
+      if (scrollPosition > 100 && navStyle === 'top') {
+        setIsNavVisible(false);
+        setTimeout(() => {
+          setNavStyle('right');
+          setIsNavVisible(true);
         }, 150);
       } else if (scrollPosition <= 100 && navStyle === 'right') {
-            setIsNavVisible(false);
-            setTimeout(() => {
-              setNavStyle('top');
-              setIsNavVisible(true);
+        setIsNavVisible(false);
+        setTimeout(() => {
+          setNavStyle('top');
+          setIsNavVisible(true);
         }, 150);
-          }
-          
+      }
+      
       // Determine active section with improved detection for experience section
-          const sections = ['readme', 'overview', 'changelog', 'examples'];
-          
+      const sections = ['readme', 'about', 'changelog', 'examples', 'stack', 'contact'];
+      
       // Special handling for experience section which may need different detection criteria
       const experienceSection = document.getElementById('experience');
       if (experienceSection) {
@@ -443,12 +697,12 @@ export default function Home() {
       }
       
       // Check other sections
-          for (const section of sections) {
+      for (const section of sections) {
         if (section === 'experience') continue; // Skip as we handled it separately
         
-            const element = document.getElementById(section);
-            if (element) {
-              const rect = element.getBoundingClientRect();
+        const element = document.getElementById(section);
+        if (element) {
+          const rect = element.getBoundingClientRect();
           const elementTop = rect.top;
           const elementBottom = rect.bottom;
           
@@ -461,10 +715,10 @@ export default function Home() {
             (elementTop <= viewportMiddleEnd && elementBottom >= viewportMiddleEnd) ||
             (elementTop >= viewportMiddleStart && elementBottom <= viewportMiddleEnd)
           ) {
-                setActiveSection(section);
-                break;
-              }
-            }
+            setActiveSection(section);
+            break;
+          }
+        }
       }
     };
     
@@ -558,6 +812,7 @@ export default function Home() {
           <link rel="manifest" href="/site.webmanifest" />
 
           {/* Fonts */}
+          <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
           <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
 
           {/* Structured Data */}
@@ -606,6 +861,8 @@ export default function Home() {
           <link rel="privacy-policy" href="/privacy" />
         </Head>
 
+      <ResumeButton />
+
       <main className={styles.main}>
         {isNavVisible && (
           <motion.nav 
@@ -622,10 +879,10 @@ export default function Home() {
               <span className={styles.docPrefix}>./</span>README.md
             </button>
             <button 
-              onClick={() => scrollToSection('overview')}
-              className={activeSection === 'overview' ? styles.active : ''}
+              onClick={() => scrollToSection('about')}
+              className={activeSection === 'about' ? styles.active : ''}
             >
-              <span className={styles.docPrefix}>./</span>OVERVIEW.md
+              <span className={styles.docPrefix}>./</span>ABOUT.md
             </button>
             <button 
               onClick={() => scrollToSection('changelog')}
@@ -638,6 +895,18 @@ export default function Home() {
               className={activeSection === 'examples' ? styles.active : ''}
             >
               <span className={styles.docPrefix}>./</span>EXAMPLES/
+            </button>
+            <button 
+              onClick={() => scrollToSection('stack')}
+              className={activeSection === 'stack' ? styles.active : ''}
+            >
+              <span className={styles.docPrefix}>./</span>package.json
+            </button>
+            <button 
+              onClick={() => scrollToSection('contact')}
+              className={activeSection === 'contact' ? styles.active : ''}
+            >
+              <span className={styles.docPrefix}>./</span>CONTACT.md
             </button>
           </motion.nav>
         )}
@@ -692,9 +961,9 @@ export default function Home() {
           ))}
         </motion.div>
 
-        <section id="overview" className={styles.section}>
+        <section id="about" className={styles.section}>
           <h2 className={styles.sectionTitle}>
-            <span className={styles.docPrefix}>./</span>OVERVIEW.md
+            <span className={styles.docPrefix}>./</span>ABOUT.md
           </h2>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -731,7 +1000,10 @@ export default function Home() {
             <div className={styles.timelineWrapper}>
               <div className={styles.timelineLine}>
                 {timelineItems.map((item, index) => (
-                  <div key={`year-${index}`} className={`${styles.timelineYear} ${expandedItem === index ? styles.expanded : ''}`}>
+                  <div 
+                    key={`year-${index}`} 
+                    className={`${styles.timelineYear} ${expandedItem === index ? styles.expanded : ''}`}
+                  >
                     {item.startYear}
                     <div className={styles.timelineDot}></div>
                   </div>
@@ -815,25 +1087,25 @@ export default function Home() {
             ))}
           </motion.div>
         </section>
+
+        <section id="stack" className={styles.section}>
+          <h2 className={styles.sectionTitle}>
+            <span className={styles.docPrefix}>./</span>package.json
+          </h2>
+          <TechStackSection />
+        </section>
+
+        <section id="contact" className={`${styles.section} ${styles.lastSection}`}>
+          <h2 className={styles.sectionTitle}>
+            <span className={styles.docPrefix}>./</span>CONTACT.md
+          </h2>
+          <ContactSection />
+          <footer className={styles.footer}>
+            <p>Built by me with Next.js ✨</p>
+          </footer>
+        </section>
       </main>
 
-      <motion.footer 
-        className={styles.footer}
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-      >
-        <motion.p
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-        >
-          Built by me with <a href="https://cursor.sh" target="_blank" rel="noopener noreferrer">Cursor</a> 🚀
-        </motion.p>
-      </motion.footer>
-      
       <Analytics />
     </div>
   );
