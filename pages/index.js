@@ -8,13 +8,11 @@ import * as THREE from 'three';
 // Add ResumeButton component at the top level
 const ResumeButton = () => {
   const handleDownload = () => {
-    // Use the correct resume file path
     const resumeUrl = '/Resume.pdf';
     
-    // Create a link element
     const link = document.createElement('a');
     link.href = resumeUrl;
-    link.download = 'Harsha_Vippala_Resume.pdf';
+    link.download = 'Resume.pdf';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -38,7 +36,7 @@ const ResumeButton = () => {
             strokeLinecap="round" 
             strokeLinejoin="round" 
             strokeWidth={2} 
-            d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" 
+            d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
           />
         </svg>
         <span className={styles.resumeLabel}>Resume</span>
@@ -147,7 +145,6 @@ const ContactSection = () => {
           className={styles.contactIcon}
           whileHover={{ y: -5, scale: 1.1 }}
           whileTap={{ scale: 0.95 }}
-          aria-label="Email"
         >
           <img src="/gmail.svg" alt="Email" />
         </motion.a>
@@ -158,7 +155,6 @@ const ContactSection = () => {
           whileTap={{ scale: 0.95 }}
           target="_blank"
           rel="noopener noreferrer"
-          aria-label="LinkedIn"
         >
           <img src="/linkedin.svg" alt="LinkedIn" />
         </motion.a>
@@ -169,45 +165,36 @@ const ContactSection = () => {
           whileTap={{ scale: 0.95 }}
           target="_blank"
           rel="noopener noreferrer"
-          aria-label="GitHub"
         >
           <img src="/github.svg" alt="GitHub" />
         </motion.a>
       </div>
 
-      <motion.div 
-        className={styles.cvSection}
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.2 }}
+      <motion.a
+        href="/Resume.pdf"
+        download
+        className={styles.resumeIconButton}
+        whileHover={{ y: -5, scale: 1.1 }}
+        whileTap={{ scale: 0.95 }}
       >
-        <motion.a
-          href="/Resume.pdf"
-          download="Harsha_Vippala_Resume.pdf"
-          className={styles.cvButton}
-          whileHover={{ y: -5, scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          aria-label="Download CV"
+        <svg 
+          xmlns="http://www.w3.org/2000/svg" 
+          width="56" 
+          height="56" 
+          viewBox="0 0 24 24" 
+          fill="none" 
+          stroke="currentColor" 
+          strokeWidth="2" 
+          strokeLinecap="round" 
+          strokeLinejoin="round"
         >
-          <svg 
-            xmlns="http://www.w3.org/2000/svg" 
-            width="24" 
-            height="24" 
-            viewBox="0 0 24 24" 
-            fill="none" 
-            stroke="currentColor" 
-            strokeWidth="2" 
-            strokeLinecap="round" 
-            strokeLinejoin="round"
-          >
-            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-            <polyline points="14 2 14 8 20 8" />
-            <line x1="12" y1="18" x2="12" y2="12" />
-            <line x1="9" y1="15" x2="15" y2="15" />
-          </svg>
-          <span>Download CV</span>
-        </motion.a>
-      </motion.div>
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+          <polyline points="14 2 14 8 20 8" />
+          <line x1="16" y1="13" x2="8" y2="13" />
+          <line x1="16" y1="17" x2="8" y2="17" />
+          <line x1="10" y1="9" x2="8" y2="9" />
+        </svg>
+      </motion.a>
     </motion.div>
   );
 };
