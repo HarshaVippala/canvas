@@ -1691,120 +1691,92 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 5rem;
-  width: 100%;
-  flex: 1;
+  gap: 2rem;
   padding: 2rem 0;
-  margin: 0;
 }
 
 .contactIcons {
   display: flex;
-  justify-content: center;
-  gap: 6rem;
-  margin: 0;
+  gap: 2rem;
+  margin-top: 2rem;
 }
 
 .contactIcon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: transparent;
-  border: none;
-  padding: 0;
-  transition: all 0.3s ease;
-  position: relative;
-}
-
-.contactIcon::after {
-  content: '';
-  position: absolute;
-  width: 150%;
-  height: 150%;
-  border-radius: 50%;
-  background: rgba(100, 255, 218, 0.15);
-  filter: blur(20px);
-  opacity: 0;
+  width: 32px;
+  height: 32px;
+  color: #64ffda;
   transition: all 0.3s ease;
 }
 
-.contactIcon:hover::after {
-  opacity: 1;
+.contactIcon:hover {
+  color: #ffffff;
 }
 
 .contactIcon img {
-  width: 3.5rem;
-  height: 3.5rem;
-  filter: brightness(0) saturate(100%) invert(92%) sepia(5%) saturate(1033%) hue-rotate(169deg) brightness(97%) contrast(87%);
+  width: 100%;
+  height: 100%;
+  filter: brightness(0.9);
   transition: all 0.3s ease;
-  z-index: 1;
 }
 
 .contactIcon:hover img {
-  filter: brightness(0) saturate(100%) invert(88%) sepia(27%) saturate(757%) hue-rotate(108deg) brightness(101%) contrast(103%);
-  transform: scale(1.1);
+  filter: brightness(1);
 }
 
-.resumeIconButton {
+.cvSection {
+  margin-top: 1rem;
+}
+
+.cvButton {
   display: flex;
   align-items: center;
-  justify-content: center;
-  background: transparent;
-  border: none;
-  padding: 0;
-  transition: all 0.3s ease;
-  margin-top: 3rem;
-  position: relative;
-}
-
-.resumeIconButton svg {
-  width: 3.5rem;
-  height: 3.5rem;
-  color: #ccd6f6;
-  transition: all 0.3s ease;
-}
-
-.resumeIconButton:hover svg {
+  gap: 0.75rem;
+  padding: 0.75rem 1.5rem;
+  background: rgba(100, 255, 218, 0.1);
+  border: 1px solid rgba(100, 255, 218, 0.2);
+  border-radius: 8px;
   color: #64ffda;
-  transform: scale(1.1);
-}
-
-.resumeIconButton::after {
-  content: '';
-  position: absolute;
-  width: 150%;
-  height: 150%;
-  border-radius: 50%;
-  background: rgba(100, 255, 218, 0.15);
-  filter: blur(20px);
-  opacity: 0;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1rem;
   transition: all 0.3s ease;
+  backdrop-filter: blur(4px);
 }
 
-.resumeIconButton:hover::after {
-  opacity: 1;
+.cvButton:hover {
+  background: rgba(100, 255, 218, 0.15);
+  border-color: rgba(100, 255, 218, 0.3);
+  color: #ffffff;
+}
+
+.cvButton svg {
+  width: 20px;
+  height: 20px;
+  stroke: currentColor;
+}
+
+.cvButton span {
+  font-weight: 500;
+  letter-spacing: 0.5px;
 }
 
 @media (max-width: 768px) {
   .contactIcons {
-    gap: 4rem;
+    gap: 1.5rem;
   }
 
-  .resumeIconButton svg {
-    width: 3rem;
-    height: 3rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .contactIcons {
-    gap: 3rem;
+  .contactIcon {
+    width: 28px;
+    height: 28px;
   }
 
-  .resumeIconButton svg {
-    width: 2.75rem;
-    height: 2.75rem;
+  .cvButton {
+    padding: 0.6rem 1.25rem;
+    font-size: 0.95rem;
+  }
+
+  .cvButton svg {
+    width: 18px;
+    height: 18px;
   }
 }
 

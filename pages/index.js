@@ -143,60 +143,71 @@ const ContactSection = () => {
     >
       <div className={styles.contactIcons}>
         <motion.a
-          href="mailto:harsha.vippala@gmail.com"
+          href="mailto:harsha.vippala1@gmail.com"
           className={styles.contactIcon}
           whileHover={{ y: -5, scale: 1.1 }}
           whileTap={{ scale: 0.95 }}
+          aria-label="Email"
         >
           <img src="/gmail.svg" alt="Email" />
         </motion.a>
         <motion.a
-          href="https://linkedin.com/in/harshavippala"
+          href="https://www.linkedin.com/in/harsha-vippala"
           className={styles.contactIcon}
           whileHover={{ y: -5, scale: 1.1 }}
           whileTap={{ scale: 0.95 }}
           target="_blank"
           rel="noopener noreferrer"
+          aria-label="LinkedIn"
         >
           <img src="/linkedin.svg" alt="LinkedIn" />
         </motion.a>
         <motion.a
-          href="https://github.com/harshavippala"
+          href="https://github.com/HarshaVippala"
           className={styles.contactIcon}
           whileHover={{ y: -5, scale: 1.1 }}
           whileTap={{ scale: 0.95 }}
           target="_blank"
           rel="noopener noreferrer"
+          aria-label="GitHub"
         >
           <img src="/github.svg" alt="GitHub" />
         </motion.a>
       </div>
 
-      <motion.a
-        href="/Harsha_Vippala_Resume.pdf"
-        download
-        className={styles.resumeIconButton}
-        whileHover={{ y: -5, scale: 1.1 }}
-        whileTap={{ scale: 0.95 }}
+      <motion.div 
+        className={styles.cvSection}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.2 }}
       >
-        <svg 
-          xmlns="http://www.w3.org/2000/svg" 
-          width="56" 
-          height="56" 
-          viewBox="0 0 24 24" 
-          fill="none" 
-          stroke="currentColor" 
-          strokeWidth="2" 
-          strokeLinecap="round" 
-          strokeLinejoin="round"
+        <motion.a
+          href="/Resume.pdf"
+          download="Harsha_Vippala_Resume.pdf"
+          className={styles.cvButton}
+          whileHover={{ y: -5, scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          aria-label="Download CV"
         >
-          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-          <polyline points="14 2 14 8 20 8" />
-          <line x1="16" y1="13" x2="8" y2="13" />
-          <line x1="16" y1="17" x2="8" y2="17" />
-          <line x1="10" y1="9" x2="8" y2="9" />
-        </svg>
-      </motion.a>
+          <svg 
+            xmlns="http://www.w3.org/2000/svg" 
+            width="24" 
+            height="24" 
+            viewBox="0 0 24 24" 
+            fill="none" 
+            stroke="currentColor" 
+            strokeWidth="2" 
+            strokeLinecap="round" 
+            strokeLinejoin="round"
+          >
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+            <polyline points="14 2 14 8 20 8" />
+            <line x1="12" y1="18" x2="12" y2="12" />
+            <line x1="9" y1="15" x2="15" y2="15" />
+          </svg>
+          <span>Download CV</span>
+        </motion.a>
+      </motion.div>
     </motion.div>
   );
 };
