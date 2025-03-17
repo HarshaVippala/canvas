@@ -17,7 +17,11 @@ export default function Document() {
         {/* Primary Meta Tags */}
         <meta name="theme-color" content="#0a192f" />
         
-        {/* Fonts - Fix for the warning about using stylesheets in head component */}
+        {/* Fonts */}
+        <link 
+          rel="stylesheet" 
+          href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" 
+        />
         <link 
           rel="stylesheet" 
           href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" 
