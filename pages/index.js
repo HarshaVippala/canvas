@@ -82,30 +82,31 @@ const timelineItems = [
     startYear: '2024',
     period: 'February 2024 - Present',
     location: 'Irving, TX',
-    summary: 'Leading development of serverless microservices for self-checkout mobile application, handling $500K+ monthly transactions across 60+ stores. Implementing IoT solutions and EBT payment systems.',
+    summary: 'Building the Mobile Checkout platform that allows customers to scan and pay for items directly from their phones, skipping the checkout line. Developing serverless microservices for real-time inventory management and secure payment processing.',
+    url: 'https://www.7-eleven.com/7rewards/mobile-checkout',
     description: 'Working on modernizing the digital experience for millions of customers through innovative web and mobile solutions.'
   },
   {
     type: 'experience',
     logo: '/Liberty-Mutual-Logo.jpg',
     company: 'Liberty Mutual Insurance',
-    role: 'Senior Software Engineer',
-    startYear: '2023',
-    period: 'February 2023 - February 2024',
-    location: 'Boston, MA',
-    summary: 'Developed NestJS APIs for third-party insurance vendor integrations, enabling real-time quote generation and automated sales workflows. Built GraphQL and gRPC-based services.',
-    description: 'Contributed to the development of enterprise-scale insurance platforms and digital transformation initiatives.'
-  },
-  {
-    type: 'experience',
-    logo: '/Liberty-Mutual-Logo.jpg',
-    company: 'Liberty Mutual Insurance',
-    role: 'Software Engineer',
+    roles: [
+      {
+        title: 'Senior Software Engineer',
+        period: 'February 2023 - February 2024',
+        summary: 'Developed core services for Certainly Insurance, Liberty Mutual\'s digital-first auto insurance platform. Built NestJS APIs and GraphQL services that enabled real-time quote generation, automated underwriting, and streamlined policy management.'
+      },
+      {
+        title: 'Software Engineer',
+        period: 'May 2021 - February 2023',
+        summary: 'Worked on the Solaria Labs innovation team building backend services for insurance products. Created APIs for policy quoting and implemented user tracking features that improved conversion rates by 7%.'
+      }
+    ],
     startYear: '2021',
-    period: 'May 2021 - February 2023',
+    endYear: '2024',
     location: 'Boston, MA',
-    summary: 'Optimized backend quoting services handling 87,000+ monthly visits. Implemented user tracking features resulting in 7% conversion rate increase.',
-    description: 'Developed and optimized backend quoting services for the insurance platform.'
+    url: 'https://www.getcertainly.com',
+    description: 'Contributed to the development of enterprise-scale insurance platforms and digital transformation initiatives.'
   },
   {
     type: 'education',
@@ -115,8 +116,9 @@ const timelineItems = [
     period: 'May 2021',
     startYear: '2019',
     location: 'New York, NY',
-    summary: 'Specialized in Artificial Intelligence and Machine Learning',
-    details: 'Specialized in Artificial Intelligence and Machine Learning'
+    summary: 'Focused on distributed systems and cloud computing',
+    url: 'https://engineering.nyu.edu/academics/programs/computer-engineering-ms',
+    details: 'Focused on distributed systems and cloud computing'
   },
   {
     type: 'education',
@@ -127,6 +129,7 @@ const timelineItems = [
     startYear: '2015',
     location: 'Vijayawada, India',
     summary: 'Graduated with First Class Honors',
+    url: 'https://www.kluniversity.in',
     details: 'Graduated with First Class Honors'
   }
 ];
@@ -316,6 +319,7 @@ export default function Home() {
   const [activeSection, setActiveSection] = useState('readme');
   const [isNavVisible, setIsNavVisible] = useState(true);
   const [expandedItem, setExpandedItem] = useState(null);
+  const changelogRef = useRef(null);
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -929,8 +933,8 @@ export default function Home() {
               <span className={styles.role}>Building scalable, cloud-native applications</span>
             </h1>
             <p className={styles.description}>
-              I'm a software engineer specializing in building exceptional digital experiences. 
-              Currently at 7-Eleven, working on self-checkout mobile applications and IoT integrations.
+              I'm a software engineer focused on building reliable backend systems and cloud infrastructure. 
+              Currently at 7-Eleven, developing self-checkout applications and payment systems (because waiting in line for your Slurpee® is so 2020 🏃‍♂️).
             </p>
           </motion.div>
         </motion.section>
@@ -972,84 +976,108 @@ export default function Home() {
             <div className={styles.aboutContent}>
               <div className={styles.aboutText}>
                 <p>
-                  Software Engineer with 5 years of experience designing and deploying scalable, cloud-native applications. Currently based in <span className={styles.highlight}>Irving, TX</span>, with expertise in Node.js, TypeScript, NestJS, and AWS with a strong background in microservices architecture, API development, and distributed systems.
+                  Based in Irving, TX, where I've spent the last 4 years building cloud-native applications (and yes, surviving the Texas summer heat 😅). My tech journey has involved lots of Node.js, TypeScript, NestJS, and AWS - focusing on microservices and distributed systems.
                 </p>
                 <p>
-                  At 7-Eleven, I'm architecting and leading development of serverless microservices for self-checkout mobile applications, handling $500K+ in transactions per month across 60+ stores. My work includes implementing IoT integrations and EBT payment systems.
+                  These days at 7-Eleven, I'm working on serverless microservices for our self-checkout system. My team handles transaction processing and payment integrations across stores, making sure customers can grab their snacks and go without a hitch. 
                 </p>
                 <p>
-                  Beyond coding, I'm passionate about system design, performance optimization, and mentoring fellow engineers. When I'm not coding, you'll find me watching Formula 1 races, following football matches, or unwinding with some PlayStation gaming. I also enjoy attending concerts and experiencing live music.
+                  When I'm not coding, I'm probably glued to F1 races (lights out and away we go!), getting competitive in FIFA, or catching live music shows. There's something special about experiencing your favorite artists perform live - it's my perfect way to reset after a week of debugging. 🎵
+                </p>
+                <p>
+                  Pretty excited about all the wild developments happening in tech lately, especially in AI and machine learning. Always up for interesting conversations about new technologies or debating which programming language is actually the best (spoiler: it's always the one you don't know yet 😉).
                 </p>
               </div>
             </div>
           </motion.div>
         </section>
 
-        <section id="changelog" className={styles.section}>
+        <motion.section 
+          id="changelog" 
+          className={styles.section}
+          ref={changelogRef}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5 }}
+        >
           <h2 className={styles.sectionTitle}>
             <span className={styles.docPrefix}>./</span>CHANGELOG.md
           </h2>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className={styles.timelineContainer}
-          >
-            <div className={styles.timelineWrapper}>
-              <div className={styles.timelineLine}>
-                {timelineItems.map((item, index) => (
-                  <div 
-                    key={`year-${index}`} 
-                    className={`${styles.timelineYear} ${expandedItem === index ? styles.expanded : ''}`}
-                  >
-                    {item.startYear}
-                    <div className={styles.timelineDot}></div>
-                  </div>
-                ))}
-              </div>
-              <div className={styles.timelineCards}>
-                {timelineItems.map((item, index) => (
-                  <motion.div 
-                    key={index}
-                    className={`${styles.timelineItem} ${expandedItem === index ? styles.expanded : ''}`}
-                    layout
-                    transition={{ duration: 0.3 }}
-                    whileHover={{ x: 5 }}
-                  >
-                    <div 
-                      className={styles.timelineHeader}
-                      onClick={() => toggleExpand(index)}
-                    >
-                      <div className={styles.timelineCardLogo}>
-                        <img src={item.logo} alt={item.type === 'experience' ? `${item.company} logo` : `${item.institution} logo`} />
-                      </div>
-                      <div className={styles.timelineSummary}>
+          <div className={styles.timelineWrapper}>
+            {timelineItems.map((item, index) => (
+              <div key={index} className={styles.timelineItem}>
+                <div className={styles.timelineDot}></div>
+                <div className={styles.timelineCard}>
+                  <div className={styles.timelineHeader}>
+                    <div className={styles.timelineCardLogo}>
+                      <img src={item.logo} alt={item.type === 'experience' ? `${item.company} logo` : `${item.institution} logo`} />
+                    </div>
+                    <div className={styles.timelineHeaderContent}>
+                      <div className={styles.timelineCompanyInfo}>
                         <div className={styles.timelineCompany}>
                           {item.type === 'experience' ? item.company : item.institution}
                         </div>
-                        <div className={styles.timelineRole}>
-                          {item.type === 'experience' ? item.role : item.degree}
-                        </div>
+                        <div className={styles.timelineLocation}>{item.location}</div>
                       </div>
                     </div>
-                    {expandedItem === index && (
-                      <motion.div 
-                        className={styles.timelineExpandedInfo}
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ duration: 0.3 }}
-                      >
-                        <div className={styles.timelinePeriod}>{item.period}</div>
-                        <div className={styles.timelineLocation}>{item.location}</div>
-                        <p className={styles.timelineSummaryText}>{item.summary}</p>
-                      </motion.div>
+                  </div>
+                  
+                  <div className={styles.timelineContent}>
+                    {item.roles ? (
+                      <div className={styles.timelineProgressions}>
+                        {item.roles.map((role, roleIndex) => (
+                          <div key={roleIndex} className={styles.timelineProgression}>
+                            <div className={styles.timelineRole}>
+                              <div className={styles.timelineRoleTitle}>{role.title}</div>
+                              <div className={styles.timelinePeriod}>{role.period}</div>
+                            </div>
+                            <div className={styles.timelineSummary}>{role.summary}</div>
+                          </div>
+                        ))}
+                      </div>
+                    ) : (
+                      <>
+                        <div className={styles.timelineRole}>
+                          <div className={styles.timelineRoleTitle}>
+                            {item.type === 'experience' ? item.role : item.degree}
+                          </div>
+                          <div className={styles.timelinePeriod}>{item.period}</div>
+                        </div>
+                        <div className={styles.timelineSummary}>{item.summary}</div>
+                      </>
                     )}
-                  </motion.div>
-                ))}
+                  </div>
+                  
+                  {item.url && (
+                    <a 
+                      href={item.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={styles.redirectIcon}
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      <svg 
+                        xmlns="http://www.w3.org/2000/svg" 
+                        width="16" 
+                        height="16" 
+                        viewBox="0 0 24 24" 
+                        fill="none" 
+                        stroke="currentColor" 
+                        strokeWidth="2" 
+                        strokeLinecap="round" 
+                        strokeLinejoin="round"
+                      >
+                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                        <polyline points="15 3 21 3 21 9"></polyline>
+                        <line x1="10" y1="14" x2="21" y2="3"></line>
+                      </svg>
+                    </a>
+                  )}
+                </div>
               </div>
-            </div>
-          </motion.div>
-        </section>
+            ))}
+          </div>
+        </motion.section>
 
         <section id="examples" className={styles.projects}>
           <h2 className={styles.sectionTitle}>
