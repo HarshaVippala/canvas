@@ -31,6 +31,10 @@ const ResumeButton = () => {
           fill="none" 
           stroke="currentColor" 
           className={styles.resumeIcon}
+          style={{
+            filter: 'drop-shadow(0 0 12px rgba(100, 255, 218, 0.4))',
+            transition: 'all 0.3s ease'
+          }}
         >
           <path 
             strokeLinecap="round" 
@@ -90,21 +94,23 @@ const timelineItems = [
     type: 'experience',
     logo: '/Liberty-Mutual-Logo.jpg',
     company: 'Liberty Mutual Insurance',
-    roles: [
-      {
-        title: 'Senior Software Engineer',
-        period: 'February 2023 - February 2024',
-        summary: 'Developed core services for Certainly Insurance, Liberty Mutual\'s digital-first auto insurance platform. Built NestJS APIs and GraphQL services that enabled real-time quote generation, automated underwriting, and streamlined policy management.'
-      },
-      {
-        title: 'Software Engineer',
-        period: 'May 2021 - February 2023',
-        summary: 'Worked on the Solaria Labs innovation team building backend services for insurance products. Created APIs for policy quoting and implemented user tracking features that improved conversion rates by 7%.'
-      }
-    ],
-    startYear: '2021',
-    endYear: '2024',
+    role: 'Senior Software Engineer',
+    startYear: '2023',
+    period: 'February 2023 - February 2024',
     location: 'Boston, MA',
+    summary: 'Developed core services for Certainly Insurance, Liberty Mutual\'s digital-first auto insurance platform. Built NestJS APIs and GraphQL services that enabled real-time quote generation, automated underwriting, and streamlined policy management.',
+    url: 'https://www.getcertainly.com',
+    description: 'Contributed to the development of enterprise-scale insurance platforms and digital transformation initiatives.'
+  },
+  {
+    type: 'experience',
+    logo: '/Liberty-Mutual-Logo.jpg',
+    company: 'Liberty Mutual Insurance',
+    role: 'Software Engineer',
+    startYear: '2021',
+    period: 'May 2021 - February 2023',
+    location: 'Boston, MA',
+    summary: 'Worked on the Solaria Labs innovation team building backend services for insurance products. Created APIs for policy quoting and implemented user tracking features that improved conversion rates by 7%.',
     url: 'https://www.getcertainly.com',
     description: 'Contributed to the development of enterprise-scale insurance platforms and digital transformation initiatives.'
   },
@@ -114,11 +120,9 @@ const timelineItems = [
     institution: 'New York University',
     degree: "Master's in Computer Engineering",
     period: 'May 2021',
-    startYear: '2019',
+    startYear: '2021',
     location: 'New York, NY',
-    summary: 'Focused on distributed systems and cloud computing',
-    url: 'https://engineering.nyu.edu/academics/programs/computer-engineering-ms',
-    details: 'Focused on distributed systems and cloud computing'
+    summary: ''
   },
   {
     type: 'education',
@@ -126,11 +130,9 @@ const timelineItems = [
     institution: 'KL University',
     degree: "Bachelor's in Computer Science",
     period: 'May 2019',
-    startYear: '2015',
+    startYear: '2019',
     location: 'Vijayawada, India',
-    summary: 'Graduated with First Class Honors',
-    url: 'https://www.kluniversity.in',
-    details: 'Graduated with First Class Honors'
+    summary: ''
   }
 ];
 
@@ -186,10 +188,14 @@ const ContactSection = () => {
           height="56" 
           viewBox="0 0 24 24" 
           fill="none" 
-          stroke="currentColor" 
+          stroke="#64ffda" 
           strokeWidth="2" 
           strokeLinecap="round" 
           strokeLinejoin="round"
+          style={{
+            filter: 'drop-shadow(0 0 12px rgba(100, 255, 218, 0.4))',
+            transition: 'all 0.3s ease'
+          }}
         >
           <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
           <polyline points="14 2 14 8 20 8" />
@@ -664,17 +670,9 @@ export default function Home() {
       
       // Existing nav style logic
       if (scrollPosition > 100 && navStyle === 'top') {
-        setIsNavVisible(false);
-        setTimeout(() => {
-          setNavStyle('right');
-          setIsNavVisible(true);
-        }, 150);
+        setNavStyle('right');
       } else if (scrollPosition <= 100 && navStyle === 'right') {
-        setIsNavVisible(false);
-        setTimeout(() => {
-          setNavStyle('top');
-          setIsNavVisible(true);
-        }, 150);
+        setNavStyle('top');
       }
       
       // Determine active section with improved detection for experience section
@@ -777,7 +775,6 @@ export default function Home() {
     <div className={styles.container} ref={containerRef}>
         <Head>
           <title>Harsha Vippala | Senior Software Engineer</title>
-          <meta charSet="utf-8" />
           <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
           <meta name="description" content="Harsha Vippala - Software Engineer specializing in web development, cloud technologies, and building exceptional digital experiences. Expertise in React, Node.js, AWS, and TypeScript." />
           
@@ -812,10 +809,6 @@ export default function Home() {
           <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
           <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
           <link rel="manifest" href="/site.webmanifest" />
-
-          {/* Fonts */}
-          <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
-          <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
 
           {/* Structured Data */}
           <script
@@ -866,52 +859,49 @@ export default function Home() {
       <ResumeButton />
 
       <main className={styles.main}>
-        {isNavVisible && (
-          <motion.nav 
-            className={`${styles.sideNav} ${navStyle === 'top' ? styles.sideNavTop : styles.sideNavRight}`}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.15, ease: "easeOut" }}
+        <motion.nav 
+          className={`${styles.sideNav} ${navStyle === 'top' ? styles.sideNavTop : styles.sideNavRight}`}
+          initial={{ opacity: 1 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.1 }}
+        >
+          <button 
+            onClick={() => scrollToSection('readme')}
+            className={activeSection === 'readme' ? styles.active : ''}
           >
-            <button 
-              onClick={() => scrollToSection('readme')}
-              className={activeSection === 'readme' ? styles.active : ''}
-            >
-              <span className={styles.docPrefix}>./</span>README.md
-            </button>
-            <button 
-              onClick={() => scrollToSection('about')}
-              className={activeSection === 'about' ? styles.active : ''}
-            >
-              <span className={styles.docPrefix}>./</span>ABOUT.md
-            </button>
-            <button 
-              onClick={() => scrollToSection('changelog')}
-              className={activeSection === 'changelog' ? styles.active : ''}
-            >
-              <span className={styles.docPrefix}>./</span>CHANGELOG.md
-            </button>
-            <button 
-              onClick={() => scrollToSection('examples')}
-              className={activeSection === 'examples' ? styles.active : ''}
-            >
-              <span className={styles.docPrefix}>./</span>EXAMPLES/
-            </button>
-            <button 
-              onClick={() => scrollToSection('stack')}
-              className={activeSection === 'stack' ? styles.active : ''}
-            >
-              <span className={styles.docPrefix}>./</span>package.json
-            </button>
-            <button 
-              onClick={() => scrollToSection('contact')}
-              className={activeSection === 'contact' ? styles.active : ''}
-            >
-              <span className={styles.docPrefix}>./</span>CONTACT.md
-            </button>
-          </motion.nav>
-        )}
+            <span className={styles.docPrefix}>./</span>README.md
+          </button>
+          <button 
+            onClick={() => scrollToSection('about')}
+            className={activeSection === 'about' ? styles.active : ''}
+          >
+            <span className={styles.docPrefix}>./</span>ABOUT.md
+          </button>
+          <button 
+            onClick={() => scrollToSection('changelog')}
+            className={activeSection === 'changelog' ? styles.active : ''}
+          >
+            <span className={styles.docPrefix}>./</span>CHANGELOG.md
+          </button>
+          <button 
+            onClick={() => scrollToSection('examples')}
+            className={activeSection === 'examples' ? styles.active : ''}
+          >
+            <span className={styles.docPrefix}>./</span>EXAMPLES/
+          </button>
+          <button 
+            onClick={() => scrollToSection('stack')}
+            className={activeSection === 'stack' ? styles.active : ''}
+          >
+            <span className={styles.docPrefix}>./</span>package.json
+          </button>
+          <button 
+            onClick={() => scrollToSection('contact')}
+            className={activeSection === 'contact' ? styles.active : ''}
+          >
+            <span className={styles.docPrefix}>./</span>CONTACT.md
+          </button>
+        </motion.nav>
 
         <motion.section 
           id="readme" 
@@ -1006,8 +996,12 @@ export default function Home() {
           <div className={styles.timelineWrapper}>
             {timelineItems.map((item, index) => (
               <div key={index} className={styles.timelineItem}>
+                <div className={styles.timelineYear}>{item.startYear}</div>
                 <div className={styles.timelineDot}></div>
-                <div className={styles.timelineCard}>
+                <div 
+                  className={`${styles.timelineCard} ${expandedItem === index ? styles.expanded : ''}`}
+                  onClick={() => toggleExpand(index)}
+                >
                   <div className={styles.timelineHeader}>
                     <div className={styles.timelineCardLogo}>
                       <img src={item.logo} alt={item.type === 'experience' ? `${item.company} logo` : `${item.institution} logo`} />
@@ -1020,58 +1014,64 @@ export default function Home() {
                         <div className={styles.timelineLocation}>{item.location}</div>
                       </div>
                     </div>
+                    <div className={styles.timelineRole}>
+                      {item.type === 'experience' ? item.role : item.degree}
+                    </div>
                   </div>
                   
-                  <div className={styles.timelineContent}>
-                    {item.roles ? (
-                      <div className={styles.timelineProgressions}>
-                        {item.roles.map((role, roleIndex) => (
-                          <div key={roleIndex} className={styles.timelineProgression}>
-                            <div className={styles.timelineRole}>
-                              <div className={styles.timelineRoleTitle}>{role.title}</div>
-                              <div className={styles.timelinePeriod}>{role.period}</div>
+                  {expandedItem === index && (
+                    <div className={styles.timelineContent}>
+                      {item.roles ? (
+                        <div className={styles.timelineProgressions}>
+                          {item.roles.map((role, roleIndex) => (
+                            <div key={roleIndex} className={styles.timelineProgression}>
+                              <div className={styles.timelineRole}>
+                                <div className={styles.timelineRoleTitle}>{role.title}</div>
+                                <div className={styles.timelinePeriod}>{role.period}</div>
+                              </div>
+                              <div className={styles.timelineSummary}>{role.summary}</div>
                             </div>
-                            <div className={styles.timelineSummary}>{role.summary}</div>
-                          </div>
-                        ))}
-                      </div>
-                    ) : (
-                      <>
-                        <div className={styles.timelineRole}>
-                          <div className={styles.timelineRoleTitle}>
-                            {item.type === 'experience' ? item.role : item.degree}
-                          </div>
-                          <div className={styles.timelinePeriod}>{item.period}</div>
+                          ))}
                         </div>
-                        <div className={styles.timelineSummary}>{item.summary}</div>
-                      </>
-                    )}
-                  </div>
-                  
-                  {item.url && (
-                    <a 
-                      href={item.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={styles.redirectIcon}
-                      onClick={(e) => e.stopPropagation()}
-                    >
-                      <svg 
-                        xmlns="http://www.w3.org/2000/svg" 
-                        width="16" 
-                        height="16" 
-                        viewBox="0 0 24 24" 
-                        fill="none" 
-                        stroke="currentColor" 
-                        strokeWidth="2" 
-                        strokeLinecap="round" 
-                        strokeLinejoin="round"
-                      >
-                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                        <polyline points="15 3 21 3 21 9"></polyline>
-                        <line x1="10" y1="14" x2="21" y2="3"></line>
-                      </svg>
-                    </a>
+                      ) : (
+                        <>
+                          <div className={styles.timelineRole}>
+                            <div className={styles.timelinePeriod}>
+                              {item.type === 'education' ? `Graduated: ${item.period}` : item.period}
+                            </div>
+                          </div>
+                          {item.type !== 'education' && item.summary && (
+                            <div className={styles.timelineSummary}>{item.summary}</div>
+                          )}
+                        </>
+                      )}
+                      
+                      {item.url && item.type === 'experience' && (
+                        <a 
+                          href={item.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className={styles.redirectIcon}
+                          onClick={(e) => e.stopPropagation()}
+                        >
+                          <svg 
+                            xmlns="http://www.w3.org/2000/svg" 
+                            width="16" 
+                            height="16" 
+                            viewBox="0 0 24 24" 
+                            fill="none" 
+                            stroke="currentColor" 
+                            strokeWidth="2" 
+                            strokeLinecap="round" 
+                            strokeLinejoin="round"
+                          >
+                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                            <polyline points="15 3 21 3 21 9"></polyline>
+                            <line x1="10" y1="14" x2="21" y2="3"></line>
+                          </svg>
+                        </a>
+                      )}
+                    </div>
                   )}
                 </div>
               </div>
